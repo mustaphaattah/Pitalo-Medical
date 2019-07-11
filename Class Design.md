@@ -19,7 +19,6 @@
   - Specialty
 
 * Specialty
-
   - String
 
 * Nurse extends Staff
@@ -27,7 +26,6 @@
 - Doctor extends Staff
 
 * Visit
-
   - Status
   - Vitals
   - Staff
