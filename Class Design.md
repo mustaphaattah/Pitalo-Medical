@@ -16,12 +16,10 @@
   - Consultation
 
 * Staff extends Person
-
   - Salary
   - Specialty
 
 * Specialty
-
   - String
 
 * Nurse extends Staff
@@ -29,7 +27,6 @@
 - Doctor extends Staff
 
 * Consultation
-
   - ConsultationType
   - Vitals
   - Staff - nurse
@@ -40,7 +37,6 @@
   - Name
 
 - Appointment extends ConsultationType
-
   - DateTime
   - Staff to see - Doctor
   - Staff who made appointment - Nurse
