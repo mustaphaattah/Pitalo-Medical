@@ -5,13 +5,15 @@
 
 * Person extends BaseEntity
   - firstName
+  - middleName
   - lastName
+  - gender
+  - dateRegistered
   - Address
 
 - Patient extends Person
   - Medical History
-  - Appointments
-  - Visits
+  - Consultation
 
 * Staff extends Person
 
@@ -19,36 +21,41 @@
   - Specialty
 
 * Specialty
+
   - String
 
 * Nurse extends Staff
 
 - Doctor extends Staff
 
-* Visit
-  - Status
-  - Vitals
-  - Staff
+* Consultation
 
-* Status
+  - ConsultationType
+  - Vitals
+  - Staff - nurse
+  - Staff - doctor
+  - Diagnosis
+
+* ConsultationType
   - Name
 
-- Appointment extends Status
+- Appointment extends ConsultationType
 
   - DateTime
   - Staff to see - Doctor
   - Staff who made appointment - Nurse
 
-- Walk-in extend Status
+- Walk-in extend ConsultationType
 
-* Emergency extends Status
-  - EmergencyCode
+* Emergency extends ConsultationType
+  - Complaint
   - DateTime
-  - Staff who raised emergency
+  - Staff who recorded emergency
+  - Doctor taking of it
 
 - EmergencyCode
-  - color
-  - Message
+  - code
+  - Info
 
 * Vitals
   - bloodType - Enum
