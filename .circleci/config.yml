@@ -23,7 +23,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "backend/pom.xml" }}
 
-      - run: mvn dependency:go-offline -f ./backend
+      - run: mvn de.qaware.maven:go-offline-maven-plugin:resolve-dependencies -f ./backend
 
       - save_cache:
           paths:

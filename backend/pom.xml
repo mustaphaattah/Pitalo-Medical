@@ -34,10 +34,6 @@
                 <groupId>de.qaware.maven</groupId>
                 <artifactId>go-offline-maven-plugin</artifactId>
                 <version>1.2.0</version>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadoc>true</downloadJavadoc>
-                </configuration>
             </plugin>
         </plugins>
     </build>
