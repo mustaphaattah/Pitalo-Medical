@@ -1,4 +1,4 @@
-package pitalo.domain;
+package pitalo.domain.Visitation.VisitationType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
