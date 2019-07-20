@@ -23,7 +23,6 @@ class VitalsTest {
     static void setUp() {
         vitals = Vitals
             .builder()
-            .id(ID)
             .bloodPressure(BLOOD_PRESSURE)
             .bodyTemperature(BODY_TEMPERATURE)
             .pulseRate(PULSE_RATE)
@@ -37,7 +36,6 @@ class VitalsTest {
 
     @Test
     void checkValues() {
-        assertEquals(ID, vitals.getId());
         assertEquals(BLOOD_PRESSURE, vitals.getBloodPressure());
         assertEquals(PULSE_RATE, vitals.getPulseRate());
         assertEquals(BODY_TEMPERATURE,vitals.getBodyTemperature());
