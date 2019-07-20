@@ -1,6 +1,6 @@
 package pitalo.domain;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,8 +16,8 @@ class AddressTest {
     static final String PROVINCE = "Ontario";
     static final String POSTAL_CODE = "K9W 8TB";
     
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         address = Address
             .builder()
             .addressLine1(ADDRESS_LINE1)
