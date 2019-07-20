@@ -1,5 +1,6 @@
 package pitalo.domain.Visitation;
 
+
 public enum BloodType {
     APOSITIVE ("A-positive"),
     ANEGATIVE ("A-negative"),
