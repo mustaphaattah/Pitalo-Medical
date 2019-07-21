@@ -1,4 +1,4 @@
-package pitalo.domain;
+package pitalo.domain.Patient;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EmergencyCode {
+@Data
+public class EmergencyContact {
 
-    private String code;
-    private String status;
+    private String relationship;
+    private String phoneNumber;
 }
