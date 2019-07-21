@@ -10,9 +10,7 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 @Entity
 @Builder
-public class Emergency implements VisitationType  {
+public class WalkIn implements VisitationType {
 
-    private static final String name = "Emergency";
-
-    private EmergencyCode emergencyCode;
+    private static final String name = "WalkIn";
 }
