@@ -16,4 +16,5 @@ public class Appointment implements VisitationType {
 
     private static final String name = "Appointment";
 
+    private AppointmentStatus appointmentStatus;
 }
