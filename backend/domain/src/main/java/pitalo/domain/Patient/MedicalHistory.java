@@ -1,9 +1,10 @@
 package pitalo.domain.Patient;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import pitalo.domain.BaseEntity;
 
 import javax.persistence.Entity;
 import java.util.Set;
@@ -12,8 +13,8 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class MedicalHistory {
+@SuperBuilder
+public class MedicalHistory extends BaseEntity {
 
     private Set<String> allergies;
     private Set<String> illnesses;
