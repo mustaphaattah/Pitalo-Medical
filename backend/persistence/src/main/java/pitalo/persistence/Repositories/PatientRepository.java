@@ -2,8 +2,8 @@ package pitalo.persistence.Repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import pitalo.domain.Visitation.VisitationType.Appointment;
+import pitalo.domain.Patient.Patient;
 
 @Repository
-public interface AppointmentRepository extends CrudRepository<Appointment, Long> {
+public interface PatientRepository extends CrudRepository<Patient, Long> {
 }
