@@ -1,6 +1,8 @@
 package pitalo.domain.Visitation;
 
+import lombok.Getter;
 
+@Getter
 public enum BloodType {
     APOSITIVE ("A-positive"),
     ANEGATIVE ("A-negative"),
@@ -16,9 +18,5 @@ public enum BloodType {
 
     BloodType(String value) {
         this.value = value;
-    }
-
-    private String value() {
-        return this.value;
     }
 }
