@@ -1,9 +1,10 @@
 package pitalo.domain.Visitation;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import pitalo.domain.BaseEntity;
 
 import javax.persistence.Entity;
 
@@ -11,8 +12,8 @@ import javax.persistence.Entity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Vitals {
+@SuperBuilder
+public class Vitals extends BaseEntity {
 
     private String bloodPressure;
     private String bodyTemperature;
