@@ -1,9 +1,10 @@
 package pitalo.domain.Patient;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import pitalo.domain.BaseEntity;
 
 import javax.persistence.Entity;
 import java.time.LocalDate;
@@ -12,8 +13,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Builder
-public class Insurance {
+@SuperBuilder
+public class Insurance extends BaseEntity {
 
     private String provider;
     private LocalDate expiryDate;
