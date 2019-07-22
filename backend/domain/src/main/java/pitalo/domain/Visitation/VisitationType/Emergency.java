@@ -1,18 +1,19 @@
 package pitalo.domain.Visitation.VisitationType;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+import pitalo.domain.BaseEntity;
 
 import javax.persistence.Entity;
 
 @Data
 @NoArgsConstructor
 @Entity
-@Builder
+@SuperBuilder
 @AllArgsConstructor
-public class Emergency implements VisitationType  {
+public class Emergency extends BaseEntity implements VisitationType  {
 
     private static final String name = "Emergency";
 
