@@ -1,19 +1,21 @@
 package pitalo.domain.Visitation.VisitationType;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 import javax.persistence.Entity;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class EmergencyCode {
+@Getter
+public enum EmergencyCode {
+    HIGH_IMMEDIATE("99281"),
+    HIGH_URGENT("99282"),
+    MODERATE("99283"),
+    LOW_SEVERITY("99284"),
+    MINOR("99285");
 
     private String code;
-    private String status;
+
+    EmergencyCode(String code) {
+        this.code = code;
+    }
 }
