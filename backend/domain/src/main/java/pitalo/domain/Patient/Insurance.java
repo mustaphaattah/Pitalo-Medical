@@ -1,9 +1,9 @@
 package pitalo.domain.Patient;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import pitalo.domain.BaseEntity;
 
 import javax.persistence.Entity;
@@ -13,7 +13,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@SuperBuilder
 public class Insurance extends BaseEntity {
 
     private String provider;
@@ -21,4 +20,12 @@ public class Insurance extends BaseEntity {
     private String policyNumber;
     private String groupNumber;
 
+    @Builder
+    public Insurance(Long id, String provider, LocalDate expiryDate, String policyNumber, String groupNumber) {
+        super(id);
+        this.provider = provider;
+        this.expiryDate = expiryDate;
+        this.policyNumber = policyNumber;
+        this.groupNumber = groupNumber;
+    }
 }
