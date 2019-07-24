@@ -3,7 +3,6 @@ package pitalo.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
 
@@ -11,9 +10,9 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@SuperBuilder
-public class Person extends BaseEntity {
+public class Person {
 
+    private Long id;
     private String firstName;
     private String lastName;
     private String middleName;

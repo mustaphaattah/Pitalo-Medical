@@ -3,9 +3,9 @@ package pitalo.domain.Patient;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -13,13 +13,13 @@ class MedicalHistoryTest {
 
     static MedicalHistory medicalHistory;
 
-    static final Set<String> ALLERGIES = new HashSet<>(Arrays.asList("Peanuts", "Shellfish"));
-    static final Set<String> LIFESTYLE = new HashSet<>(Arrays.asList("Smoking"));
-    static final Set<String> ILLNESSES = new HashSet<>(Arrays.asList("Diabetes"));
-    static final Set<String> MEDICATIONS = new HashSet<>(Arrays.asList("Insulin"));
+    static final List<String> ALLERGIES = new ArrayList<>(Arrays.asList("Peanuts", "Shellfish"));
+    static final List<String> LIFESTYLE = new ArrayList<>(Arrays.asList("Smoking"));
+    static final List<String> ILLNESSES = new ArrayList<>(Arrays.asList("Diabetes"));
+    static final List<String> MEDICATIONS = new ArrayList<>(Arrays.asList("Insulin"));
 
     @BeforeAll
-    static void setUp() {
+    static void ListUp() {
 
         medicalHistory = MedicalHistory
             .builder()
@@ -45,7 +45,7 @@ class MedicalHistoryTest {
     }
 
     @Test
-    void testSetValues() {
+    void testListValues() {
 
         assertTrue(medicalHistory.getIllnesses().contains("Diabetes"));
         assertFalse(medicalHistory.getMedications().contains("Panadol"));
