@@ -73,7 +73,7 @@ class WalkInServiceTest {
         when(walkInRepository.save(any(WalkIn.class))).thenReturn(walkIn);
         WalkIn savedWalkIn = walkInService.save(walkIn);
 
-        assertNotNull(walkIn);
+        assertNotNull(savedWalkIn);
         verify(walkInRepository).save(any(WalkIn.class));
     }
 
