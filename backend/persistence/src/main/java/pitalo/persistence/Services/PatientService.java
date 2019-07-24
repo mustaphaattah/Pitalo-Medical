@@ -44,4 +44,5 @@ public class PatientService implements CrudService<Patient, Long> {
     public void deleteById(Long id) {
         patientRepository.deleteById(id);
     }
+
 }

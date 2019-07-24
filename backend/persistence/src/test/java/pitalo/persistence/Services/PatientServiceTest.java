@@ -15,6 +15,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
@@ -65,6 +66,13 @@ class PatientServiceTest {
     }
 
     @Test
+    void findByIdReturnNull() {
+        when(patientRepository.findById(anyLong())).thenReturn(Optional.empty());
+        Patient patient = patientService.findById(ID_1);
+        assertNull(patient);
+    }
+
+    @Test
     void findById() {
         when(patientRepository.findById(anyLong())).thenReturn(Optional.of(patient1));
         Patient patient = patientService.findById(ID_1);
@@ -73,7 +81,7 @@ class PatientServiceTest {
 
     @Test
     void save() {
-        when(patientRepository.save(any())).thenReturn(patient2);
+        when(patientRepository.save(any(Patient.class))).thenReturn(patient2);
         Patient patient = patientService.save(patient2);
 
         assertNotNull(patient);
