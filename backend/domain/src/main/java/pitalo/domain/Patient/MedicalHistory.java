@@ -13,7 +13,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 public class MedicalHistory extends BaseEntity {
 
     private List<String> allergies;
@@ -23,5 +22,14 @@ public class MedicalHistory extends BaseEntity {
     private List<String> medications;
     private List<String> lifeStyle;
 
-
+    @Builder
+    public MedicalHistory(Long id, List<String> allergies, List<String> illnesses, List<String> injuries, List<String> surgeries, List<String> medications, List<String> lifeStyle) {
+        super(id);
+        this.allergies = allergies;
+        this.illnesses = illnesses;
+        this.injuries = injuries;
+        this.surgeries = surgeries;
+        this.medications = medications;
+        this.lifeStyle = lifeStyle;
+    }
 }
