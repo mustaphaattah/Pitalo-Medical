@@ -16,13 +16,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Doctor extends Person {
 
-    private String salary;
     private Specialty specialty;
 
     @Builder
-    public Doctor(Long id, String firstName, String lastName, String middleName, Sex sex, LocalDateTime registrationDate, Address address, String salary, Specialty specialty) {
+    public Doctor(Long id, String firstName, String lastName, String middleName, Sex sex, LocalDateTime registrationDate, Address address, Specialty specialty) {
         super(id, firstName, lastName, middleName, sex, registrationDate, address);
-        this.salary = salary;
         this.specialty = specialty;
     }
 }
