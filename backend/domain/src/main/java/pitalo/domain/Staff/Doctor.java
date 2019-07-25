@@ -8,6 +8,9 @@ import pitalo.domain.Person;
 import pitalo.domain.Sex;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 
@@ -16,6 +19,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Doctor extends Person {
 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "specialty_id")
     private Specialty specialty;
 
     @Builder
