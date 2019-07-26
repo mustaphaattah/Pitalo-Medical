@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
@@ -14,11 +15,12 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@MappedSuperclass
-public class Person {
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Person {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column(name = "first_name")
@@ -32,6 +34,10 @@ public class Person {
     @Column(name = "middle_name")
     private String middleName;
 
+    @Column(name = "email")
+    @Email
+    private String email;
+
     @Column(name = "sex")
     @NotNull
     private Sex sex;
@@ -41,11 +47,10 @@ public class Person {
     private LocalDateTime registrationDate;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
     private Address address;
 
     @PrePersist
-    protected void setSex() {
+    protected void init() {
         if (this.sex.name().equals("Male")) {
             this.sex = Sex.Male;
         } else if (this.sex.name().equals("Female")) {
@@ -53,10 +58,8 @@ public class Person {
         } else {
             this.sex = Sex.Not_Given;
         }
-    }
 
-    @PrePersist
-    protected  void setRegistrationDate() {
         this.registrationDate = LocalDateTime.now();
     }
+
 }

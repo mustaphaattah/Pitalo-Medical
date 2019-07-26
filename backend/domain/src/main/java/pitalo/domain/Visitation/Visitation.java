@@ -21,7 +21,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Visitation extends BaseEntity {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "type_id")
     private VisitationType visitationType;
 
     @OneToOne(cascade = CascadeType.ALL)

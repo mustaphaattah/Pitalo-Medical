@@ -42,10 +42,9 @@ public class Patient extends Person {
     @Pattern(regexp = "\\d{4}[\\-]?\\d{3}[\\-]?\\d{3}[\\-]?[A-Z]{2}", message = "Health number must match format: 1234-123-123-AB")
     private String healthNumber;
 
-
     @Builder
-    public Patient(Long id, String firstName, String lastName, String middleName, Sex sex, String healthNumber,LocalDateTime registrationDate, Address address, MedicalHistory medicalHistory, Insurance insurance, List<EmergencyContact> emergencyContacts, List<Visitation> visitations, String occupation) {
-        super(id, firstName, lastName, middleName, sex, registrationDate, address);
+    public Patient(Long id, String firstName, String lastName, String middleName, String email, Sex sex, String healthNumber,LocalDateTime registrationDate, Address address, MedicalHistory medicalHistory, Insurance insurance, List<EmergencyContact> emergencyContacts, List<Visitation> visitations, String occupation) {
+        super(id, firstName, lastName, middleName, email, sex, registrationDate, address);
         this.medicalHistory = medicalHistory;
         this.insurance = insurance;
         this.emergencyContacts = emergencyContacts;

@@ -2,9 +2,6 @@ package pitalo.domain.Visitation.VisitationType;
 
 import lombok.Getter;
 
-import javax.persistence.Entity;
-
-@Entity
 @Getter
 public enum EmergencyCode {
     HIGH_IMMEDIATE("99281"),

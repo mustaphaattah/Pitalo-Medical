@@ -7,14 +7,15 @@ import pitalo.domain.Visitation.Visitation;
 
 import javax.persistence.*;
 
-@MappedSuperclass
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class VisitationType {
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class VisitationType {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @OneToOne(mappedBy = "visitationType")

@@ -28,8 +28,8 @@ public class Doctor extends Person {
     private List<Visitation> visitations;
 
     @Builder
-    public Doctor(Long id, @NotEmpty(message = "FirstName is required") String firstName, @NotEmpty(message = "LastName is required") String lastName, String middleName, @NotNull Sex sex, LocalDateTime registrationDate, Address address, Specialty specialty, List<Visitation> visitations) {
-        super(id, firstName, lastName, middleName, sex, registrationDate, address);
+    public Doctor(Long id, @NotEmpty(message = "FirstName is required") String firstName, @NotEmpty(message = "LastName is required") String lastName, String middleName, String email, @NotNull Sex sex, LocalDateTime registrationDate, Address address, Specialty specialty, List<Visitation> visitations) {
+        super(id, firstName, lastName, middleName, email, sex, registrationDate, address);
         this.specialty = specialty;
         this.visitations = visitations;
     }
