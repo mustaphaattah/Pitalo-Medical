@@ -22,7 +22,6 @@ public class Insurance extends BaseEntity {
     @NotEmpty(message = "Provider is required")
     private String provider;
 
-    @NotEmpty
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "expiry_date")
     private LocalDate expiryDate;

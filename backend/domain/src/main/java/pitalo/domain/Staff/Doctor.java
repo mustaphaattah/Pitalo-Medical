@@ -3,6 +3,7 @@ package pitalo.domain.Staff;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Singular;
 import pitalo.domain.Address;
 import pitalo.domain.Person;
 import pitalo.domain.Sex;
@@ -24,6 +25,7 @@ public class Doctor extends Person {
     @JoinColumn(name = "specialty_id")
     private Specialty specialty;
 
+    @Singular("visitation")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctor")
     private List<Visitation> visitations;
 

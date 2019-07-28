@@ -1,9 +1,6 @@
 package pitalo.domain.Patient;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pitalo.domain.Address;
 import pitalo.domain.Person;
 import pitalo.domain.Sex;
@@ -21,17 +18,22 @@ import java.util.List;
 @Data
 public class Patient extends Person {
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "medicalHistory_id")
+    @OneToOne(
+        cascade = CascadeType.ALL,
+        mappedBy = "patient",
+        orphanRemoval = true
+    )
     private MedicalHistory medicalHistory;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "insurance_id")
     private Insurance insurance;
 
+    @Singular("emergencyContact")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient", orphanRemoval = true)
     private List<EmergencyContact> emergencyContacts;
 
+    @Singular("visitation")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "patient", orphanRemoval = true)
     private List<Visitation> visitations;
 

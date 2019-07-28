@@ -1,13 +1,11 @@
 package pitalo.domain.Patient;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pitalo.domain.BaseEntity;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import java.util.List;
 
@@ -17,25 +15,32 @@ import java.util.List;
 @AllArgsConstructor
 public class MedicalHistory extends BaseEntity {
 
+    @Singular("allergy")
     @ElementCollection
     private List<String> allergies;
 
+    @Singular("illness")
     @ElementCollection
     private List<String> illnesses;
 
+    @Singular("injury")
     @ElementCollection
     private List<String> injuries;
 
+    @Singular("surgery")
     @ElementCollection
     private List<String> surgeries;
 
+    @Singular("medication")
     @ElementCollection
     private List<String> medications;
 
+    @Singular("lifeStyle")
     @ElementCollection
     private List<String> lifeStyle;
 
-    @OneToOne(mappedBy = "medicalHistory")
+    @OneToOne
+    @MapsId
     private Patient patient;
 
     @Builder

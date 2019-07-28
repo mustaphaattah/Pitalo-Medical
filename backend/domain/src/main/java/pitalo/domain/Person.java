@@ -51,13 +51,6 @@ public abstract class Person {
 
     @PrePersist
     protected void init() {
-        if (this.sex.name().equals("Male")) {
-            this.sex = Sex.Male;
-        } else if (this.sex.name().equals("Female")) {
-            this.sex = Sex.Female;
-        } else {
-            this.sex = Sex.Not_Given;
-        }
 
         this.registrationDate = LocalDateTime.now();
     }
