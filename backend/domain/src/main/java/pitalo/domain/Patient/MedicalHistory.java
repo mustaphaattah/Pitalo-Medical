@@ -12,6 +12,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class MedicalHistory extends BaseEntity {
 
     @Singular("allergy")
@@ -41,7 +42,7 @@ public class MedicalHistory extends BaseEntity {
     @OneToOne(mappedBy = "medicalHistory")
     private Patient patient;
 
-    @Builder
+//    @Builder
     public MedicalHistory(Long id, List<String> allergies, List<String> illnesses, List<String> injuries, List<String> surgeries, List<String> medications, List<String> lifeStyle) {
         super(id);
         this.allergies = allergies;

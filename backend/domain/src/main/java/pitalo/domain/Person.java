@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
 
@@ -49,6 +50,11 @@ public abstract class Person {
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "address_id")
     private Address address;
+
+    @NotEmpty(message = "Phone number is required")
+    @Column(name = "phone_number")
+    @Pattern(regexp = "\\(\\d{3}\\)[\\-]?\\d{3}[\\-]?\\d{4}", message = "Phone number must match format: (123)-123-1234")
+    private String phoneNumber;
 
     @PrePersist
     protected void init() {

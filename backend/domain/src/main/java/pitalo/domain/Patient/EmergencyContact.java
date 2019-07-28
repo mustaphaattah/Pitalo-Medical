@@ -19,6 +19,12 @@ import javax.validation.constraints.Pattern;
 @Data
 public class EmergencyContact extends BaseEntity {
 
+    @NotEmpty(message = "First Name is required")
+    private String firstName;
+
+    @NotEmpty(message = "Last Name is required")
+    private String lastName;
+
     @NotEmpty(message = "Relationship is required")
     private String relationship;
 
@@ -32,8 +38,10 @@ public class EmergencyContact extends BaseEntity {
     private Patient patient;
 
     @Builder
-    public EmergencyContact(Long id, String relationship, String phoneNumber, Patient patient) {
+    public EmergencyContact(Long id, String firstName, String lastName, String relationship, String phoneNumber, Patient patient) {
         super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.relationship = relationship;
         this.phoneNumber = phoneNumber;
         this.patient = patient;

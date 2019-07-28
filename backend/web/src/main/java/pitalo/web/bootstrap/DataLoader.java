@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pitalo.domain.Address;
 import pitalo.domain.Patient.Insurance;
+import pitalo.domain.Patient.MedicalHistory;
 import pitalo.domain.Patient.Patient;
 import pitalo.domain.Sex;
 import pitalo.domain.Staff.Doctor;
@@ -43,8 +44,86 @@ public class DataLoader implements CommandLineRunner {
 
     public void loadPatients() {
 
-        /*
-            Insurance Details
+        /**
+         * Medical History Details
+         *
+         */
+
+        MedicalHistory history1 = MedicalHistory
+            .builder()
+            .allergy("Peanuts")
+            .allergy("Fish")
+            .build();
+
+        MedicalHistory history2 = MedicalHistory
+            .builder()
+            .lifeStyle("Smoking")
+            .lifeStyle("Alcohol")
+            .build();
+
+        MedicalHistory history3 = MedicalHistory
+            .builder()
+            .lifeStyle("Smoking")
+            .lifeStyle("Alcohol")
+            .illness("Rheumatoid Arthritis")
+            .injury("Knee injury")
+            .medication("Celebrex")
+            .build();
+
+        MedicalHistory history4 = MedicalHistory
+            .builder()
+            .allergy("Penicillin")
+            .injury("Groin pull")
+            .build();
+
+        MedicalHistory history5 = MedicalHistory
+            .builder()
+            .illness("Asthma")
+            .surgery("Appendectomy")
+            .build();
+
+        MedicalHistory history6 = MedicalHistory
+            .builder()
+            .allergy("Milk")
+            .illness("Breast Cancer")
+            .surgery("Mastectomy")
+            .surgery("Hysterectomy")
+            .build();
+
+        MedicalHistory history7 = MedicalHistory
+            .builder()
+            .illness("Hepatitis B")
+            .medication("Engirix-B")
+            .build();
+
+        MedicalHistory history8 = MedicalHistory
+            .builder()
+            .illness("Diabetes Type I")
+            .surgery("Gastric Bypass Surgery")
+            .surgery("Bariatric  Surgery")
+            .medication("Apidra")
+            .medication("Humalog")
+            .build();
+
+        MedicalHistory history9 = MedicalHistory
+            .builder()
+            .illness("Dyspareunia")
+            .medication("Ospemifene")
+            .lifeStyle("Smoking")
+            .lifeStyle("Alcohol")
+            .build();
+
+        MedicalHistory historyx = MedicalHistory
+            .builder()
+            .illness("Hypertension")
+            .medication("Zestril")
+            .build();
+
+
+
+        /**
+         * Insurance Details
+         *
          */
 
         Insurance insuritas1 = Insurance
@@ -130,6 +209,7 @@ public class DataLoader implements CommandLineRunner {
 
         /**
          * Address Data
+         *
          */
 
         Address address1 = Address
@@ -213,9 +293,9 @@ public class DataLoader implements CommandLineRunner {
             .build();
 
 
-
         /**
-            Patient Data
+         *  Patient Details
+         *
          */
 
         Patient patient1 = Patient
@@ -227,6 +307,8 @@ public class DataLoader implements CommandLineRunner {
             .insurance(insuritas1)
             .email("JKrauss@gmail.com")
             .address(address1)
+            .medicalHistory(history1)
+            .phoneNumber("(613)-890-9876")
             .sex(Sex.Male)
             .build();
 
@@ -239,6 +321,8 @@ public class DataLoader implements CommandLineRunner {
             .insurance(insuritas2)
             .email("MauraG@sweets.com")
             .address(address2)
+            .phoneNumber("(613)-836-8374")
+            .medicalHistory(history6)
             .sex(Sex.Female)
             .build();
 
@@ -250,6 +334,8 @@ public class DataLoader implements CommandLineRunner {
             .occupation("Cook")
             .insurance(insuritas3)
             .address(address3)
+            .phoneNumber("(613)-223-4623")
+            .medicalHistory(history8)
             .sex(Sex.Female)
             .build();
 
@@ -262,6 +348,8 @@ public class DataLoader implements CommandLineRunner {
             .email("jarUnicorn@gmail.com")
             .insurance(lifeCrest1)
             .address(address4)
+            .phoneNumber("(613)-986-1342")
+            .medicalHistory(history2)
             .sex(Sex.Male)
             .build();
 
@@ -274,6 +362,8 @@ public class DataLoader implements CommandLineRunner {
             .insurance(lifeCrest2)
             .email("jonkilliam@gmail.com")
             .address(address5)
+            .phoneNumber("(613)-892-7348")
+            .medicalHistory(history4)
             .sex(Sex.Male)
             .build();
 
@@ -286,6 +376,8 @@ public class DataLoader implements CommandLineRunner {
             .insurance(lifeCrest3)
             .email("emilioway@yahoo.com")
             .address(address6)
+            .phoneNumber("(613)-753-9864")
+            .medicalHistory(history5)
             .sex(Sex.Male)
             .build();
 
@@ -294,10 +386,12 @@ public class DataLoader implements CommandLineRunner {
             .firstName("Nelson")
             .lastName("Cornman")
             .healthNumber("4169-753-031-DS")
-            .occupation("Driver")
+            .occupation("Accountant")
             .insurance(paySurance1)
             .email("nman@yahoo.com")
             .address(address7)
+            .phoneNumber("(613)-453-8763")
+            .medicalHistory(historyx)
             .sex(Sex.Male)
             .build();
 
@@ -310,6 +404,8 @@ public class DataLoader implements CommandLineRunner {
             .insurance(paySurance2)
             .email("blow@gmail.com")
             .address(address8)
+            .phoneNumber("(613)-872-8963")
+            .medicalHistory(history3)
             .sex(Sex.Female)
             .build();
 
@@ -321,6 +417,8 @@ public class DataLoader implements CommandLineRunner {
             .occupation("Florist")
             .insurance(paySurance3)
             .address(address9)
+            .phoneNumber("(613)-324-8962")
+            .medicalHistory(history7)
             .sex(Sex.Female)
             .build();
 
@@ -333,6 +431,8 @@ public class DataLoader implements CommandLineRunner {
             .insurance(fundGuard)
             .email("katedown@kxlabs.com")
             .address(addressx)
+            .phoneNumber("(613)-478-9286")
+            .medicalHistory(history9)
             .sex(Sex.Female)
             .build();
 
@@ -395,6 +495,7 @@ public class DataLoader implements CommandLineRunner {
             .lastName("Broome")
             .email("chbroome@pitalo.com")
             .specialty(cardio)
+            .phoneNumber("(613)-754-7285")
             .sex(Sex.Female)
             .build();
 
@@ -402,8 +503,9 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .firstName("Elvina")
             .lastName("Abdul")
-            .email("elAbdul@pitalo.com")
+            .email("elabdul@pitalo.com")
             .specialty(gyna)
+            .phoneNumber("(613)-918-8962")
             .sex(Sex.Female)
             .build();
 
@@ -411,8 +513,9 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .firstName("Jonah")
             .lastName("Swinton")
-            .email("joSwinton@pitalo.com")
+            .email("joswinton@pitalo.com")
             .specialty(nephro)
+            .phoneNumber("(613)-977-0882")
             .sex(Sex.Male)
             .build();
 
@@ -420,8 +523,9 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .firstName("Tamika")
             .lastName("Akerley")
-            .email("tAkerley@pitalo.com")
+            .email("takerley@pitalo.com")
             .specialty(gen)
+            .phoneNumber("(613)-232-2322")
             .sex(Sex.Female)
             .build();
 
@@ -429,8 +533,9 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .firstName("Garrett")
             .lastName("Deleon")
-            .email("gDeleon@pitalo.com")
+            .email("gdeleon@pitalo.com")
             .specialty(emer)
+            .phoneNumber("(613)-764-4548")
             .sex(Sex.Male)
             .build();
 
@@ -438,8 +543,9 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .firstName("Ellen")
             .lastName("Behler")
-            .email("ellBehler@pitalo.com")
+            .email("ellbehler@pitalo.com")
             .specialty(emer)
+            .phoneNumber("(613)-968-9567")
             .sex(Sex.Female)
             .build();
 
@@ -447,8 +553,9 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .firstName("Sara")
             .lastName("Lavoie")
-            .email("SLavoie@pitalo.com")
+            .email("slavoie@pitalo.com")
             .specialty(pedia)
+            .phoneNumber("(613)-225-3628")
             .sex(Sex.Female)
             .build();
 
