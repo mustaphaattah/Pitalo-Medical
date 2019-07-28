@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MedicalHistoryTest {
@@ -40,8 +41,8 @@ class MedicalHistoryTest {
     @Test
     void testEmptyValues() {
 
-        assertNull(medicalHistory.getInjuries());
-        assertNull(medicalHistory.getSurgeries());
+        assertThat(medicalHistory.getInjuries()).isEmpty();
+        assertThat(medicalHistory.getSurgeries()).isEmpty();
     }
 
     @Test
