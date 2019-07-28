@@ -3,6 +3,7 @@ package pitalo.web.bootstrap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import pitalo.domain.Address;
 import pitalo.domain.Patient.Insurance;
 import pitalo.domain.Patient.Patient;
 import pitalo.domain.Sex;
@@ -128,6 +129,92 @@ public class DataLoader implements CommandLineRunner {
 
 
         /**
+         * Address Data
+         */
+
+        Address address1 = Address
+            .builder()
+            .addressLine1("397 S. Harvey Dr.")
+            .city("Meaford")
+            .province("ON")
+            .postalCode("N4L 2S5")
+            .build();
+
+        Address address2 = Address
+            .builder()
+            .addressLine1("17 Bay Meadows Ave.")
+            .city("Sainte-Adèle")
+            .province("QC")
+            .postalCode("J8B 0M2")
+            .build();
+
+        Address address3 = Address
+            .builder()
+            .addressLine1("755 W. Smith Ave.")
+            .city("Laterrière")
+            .province("QC")
+            .postalCode("G7N 8H2")
+            .build();
+
+        Address address4 = Address
+            .builder()
+            .addressLine1("73 Carriage Lane")
+            .city("Portage la Prairie")
+            .province("MB")
+            .postalCode("R1N 1T5")
+            .build();
+
+        Address address5 = Address
+            .builder()
+            .addressLine1("32 Lilac Lane")
+            .city("Beaumont")
+            .province("AB")
+            .postalCode("T4X 5R0")
+            .build();
+
+        Address address6 = Address
+            .builder()
+            .addressLine1("192 Tunnel Rd.")
+            .city("Georgetown")
+            .province("ON")
+            .postalCode("L7G 5S7")
+            .build();
+
+        Address address7 = Address
+            .builder()
+            .addressLine1("9197 Trout Rd.")
+            .city("Belledune")
+            .province("NB")
+            .postalCode("E8G 4C5")
+            .build();
+
+        Address address8 = Address
+            .builder()
+            .addressLine1("199 Tallwood Lane")
+            .city("Baie-Saint-Paul")
+            .province("QC")
+            .postalCode("G3Z 5K5")
+            .build();
+
+        Address address9 = Address
+            .builder()
+            .addressLine1("7198 West Ivy Circle")
+            .city("Brooks")
+            .province("AB")
+            .postalCode("T1R 6H4")
+            .build();
+
+        Address addressx = Address
+            .builder()
+            .addressLine1("208 Elizabeth Drive")
+            .city("Dryden")
+            .province("ON")
+            .postalCode("P8N 7G5")
+            .build();
+
+
+
+        /**
             Patient Data
          */
 
@@ -138,6 +225,8 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("4356-937-271-DS")
             .occupation("Farmer")
             .insurance(insuritas1)
+            .email("JKrauss@gmail.com")
+            .address(address1)
             .sex(Sex.Male)
             .build();
 
@@ -148,6 +237,8 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("2293-327-331-DS")
             .occupation("Baker")
             .insurance(insuritas2)
+            .email("MauraG@sweets.com")
+            .address(address2)
             .sex(Sex.Female)
             .build();
 
@@ -158,6 +249,7 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("2085-839-301-DS")
             .occupation("Cook")
             .insurance(insuritas3)
+            .address(address3)
             .sex(Sex.Female)
             .build();
 
@@ -167,7 +259,9 @@ public class DataLoader implements CommandLineRunner {
             .lastName("Hufford")
             .healthNumber("3871-030-311-DS")
             .occupation("Policeman")
+            .email("jarUnicorn@gmail.com")
             .insurance(lifeCrest1)
+            .address(address4)
             .sex(Sex.Male)
             .build();
 
@@ -178,6 +272,8 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("3759-417-791-DS")
             .occupation("Teacher")
             .insurance(lifeCrest2)
+            .email("jonkilliam@gmail.com")
+            .address(address5)
             .sex(Sex.Male)
             .build();
 
@@ -188,6 +284,8 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("6986-964-171-DS")
             .occupation("Bus Driver")
             .insurance(lifeCrest3)
+            .email("emilioway@yahoo.com")
+            .address(address6)
             .sex(Sex.Male)
             .build();
 
@@ -198,6 +296,8 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("4169-753-031-DS")
             .occupation("Driver")
             .insurance(paySurance1)
+            .email("nman@yahoo.com")
+            .address(address7)
             .sex(Sex.Male)
             .build();
 
@@ -208,6 +308,8 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("5322-541-641-DS")
             .occupation("Cleaner")
             .insurance(paySurance2)
+            .email("blow@gmail.com")
+            .address(address8)
             .sex(Sex.Female)
             .build();
 
@@ -218,6 +320,7 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("3464-888-921-DS")
             .occupation("Florist")
             .insurance(paySurance3)
+            .address(address9)
             .sex(Sex.Female)
             .build();
 
@@ -228,6 +331,8 @@ public class DataLoader implements CommandLineRunner {
             .healthNumber("2126-453-031-DS")
             .occupation("Lab Assistant")
             .insurance(fundGuard)
+            .email("katedown@kxlabs.com")
+            .address(addressx)
             .sex(Sex.Female)
             .build();
 

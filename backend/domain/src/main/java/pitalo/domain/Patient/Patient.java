@@ -18,11 +18,8 @@ import java.util.List;
 @Data
 public class Patient extends Person {
 
-    @OneToOne(
-        cascade = CascadeType.ALL,
-        mappedBy = "patient",
-        orphanRemoval = true
-    )
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "history_id")
     private MedicalHistory medicalHistory;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)

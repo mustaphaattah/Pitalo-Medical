@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
 @Entity
 @Data
@@ -17,12 +18,14 @@ import javax.validation.constraints.NotEmpty;
 public class Address extends BaseEntity {
 
     @NotEmpty(message = "Postal Code is required")
+    @Pattern(regexp = "^[A-Z][0-9][A-Z] [0-9][A-Z][0-9]$", message = "Postal Code must match format: K1G 4A0")
     private String postalCode;
 
     @NotEmpty(message = "City is required")
     private String city;
 
     @NotEmpty(message = "Province is required")
+    @Pattern(regexp = "[A-Z]{2}", message = "Province must match format: ON")
     private String province;
 
     @NotEmpty(message = "Address is required")

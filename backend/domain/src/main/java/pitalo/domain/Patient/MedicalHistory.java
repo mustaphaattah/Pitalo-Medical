@@ -5,7 +5,6 @@ import pitalo.domain.BaseEntity;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import java.util.List;
 
@@ -39,8 +38,7 @@ public class MedicalHistory extends BaseEntity {
     @ElementCollection
     private List<String> lifeStyle;
 
-    @OneToOne
-    @MapsId
+    @OneToOne(mappedBy = "medicalHistory")
     private Patient patient;
 
     @Builder
