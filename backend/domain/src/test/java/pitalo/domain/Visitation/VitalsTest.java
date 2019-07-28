@@ -14,7 +14,6 @@ class VitalsTest {
     static final String PULSE_RATE = "80";
     static final String BODY_TEMPERATURE = "98.2F";
     static final String RESPIRATION_RATE = "15";
-    static final BloodType BLOOD_TYPE = BloodType.ABPOSITIVE;
     static final String WEIGHT = "160kg";
     static final String HEIGHT = "6'0";
 
@@ -29,7 +28,6 @@ class VitalsTest {
             .weight(WEIGHT)
             .height(HEIGHT)
             .respirationRate(RESPIRATION_RATE)
-            .bloodType(BLOOD_TYPE)
             .build();
     }
 
@@ -40,7 +38,6 @@ class VitalsTest {
         assertEquals(PULSE_RATE, vitals.getPulseRate());
         assertEquals(BODY_TEMPERATURE,vitals.getBodyTemperature());
         assertEquals(RESPIRATION_RATE, vitals.getRespirationRate());
-        assertEquals(BLOOD_TYPE, vitals.getBloodType());
         assertEquals(WEIGHT,vitals.getWeight());
         assertEquals(HEIGHT, vitals.getHeight());
 

@@ -4,13 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import pitalo.domain.Address;
-import pitalo.domain.Patient.Insurance;
-import pitalo.domain.Patient.MedicalHistory;
-import pitalo.domain.Patient.Patient;
+import pitalo.domain.Patient.*;
 import pitalo.domain.Sex;
 import pitalo.domain.Staff.Doctor;
 import pitalo.domain.Staff.Specialty;
 import pitalo.persistence.Services.DoctorService;
+import pitalo.persistence.Services.EmergencyContactService;
 import pitalo.persistence.Services.PatientService;
 import pitalo.persistence.Services.SpecialtyService;
 
@@ -27,6 +26,9 @@ public class DataLoader implements CommandLineRunner {
 
     @Autowired
     private SpecialtyService specialtyService;
+
+    @Autowired
+    private EmergencyContactService emergencyContactService;
 
 
     @Override
@@ -53,12 +55,14 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .allergy("Peanuts")
             .allergy("Fish")
+            .bloodType(BloodType.ABNEGATIVE)
             .build();
 
         MedicalHistory history2 = MedicalHistory
             .builder()
             .lifeStyle("Smoking")
             .lifeStyle("Alcohol")
+            .bloodType(BloodType.ABPOSITIVE)
             .build();
 
         MedicalHistory history3 = MedicalHistory
@@ -68,18 +72,21 @@ public class DataLoader implements CommandLineRunner {
             .illness("Rheumatoid Arthritis")
             .injury("Knee injury")
             .medication("Celebrex")
+            .bloodType(BloodType.ANEGATIVE)
             .build();
 
         MedicalHistory history4 = MedicalHistory
             .builder()
             .allergy("Penicillin")
             .injury("Groin pull")
+            .bloodType(BloodType.ONEGATIVE)
             .build();
 
         MedicalHistory history5 = MedicalHistory
             .builder()
             .illness("Asthma")
             .surgery("Appendectomy")
+            .bloodType(BloodType.OPOSITIVE)
             .build();
 
         MedicalHistory history6 = MedicalHistory
@@ -88,12 +95,14 @@ public class DataLoader implements CommandLineRunner {
             .illness("Breast Cancer")
             .surgery("Mastectomy")
             .surgery("Hysterectomy")
+            .bloodType(BloodType.OPOSITIVE)
             .build();
 
         MedicalHistory history7 = MedicalHistory
             .builder()
             .illness("Hepatitis B")
             .medication("Engirix-B")
+            .bloodType(BloodType.BPOSITIVE)
             .build();
 
         MedicalHistory history8 = MedicalHistory
@@ -103,6 +112,7 @@ public class DataLoader implements CommandLineRunner {
             .surgery("Bariatric  Surgery")
             .medication("Apidra")
             .medication("Humalog")
+            .bloodType(BloodType.BNEGATIVE)
             .build();
 
         MedicalHistory history9 = MedicalHistory
@@ -111,12 +121,14 @@ public class DataLoader implements CommandLineRunner {
             .medication("Ospemifene")
             .lifeStyle("Smoking")
             .lifeStyle("Alcohol")
+            .bloodType(BloodType.OPOSITIVE)
             .build();
 
         MedicalHistory historyx = MedicalHistory
             .builder()
             .illness("Hypertension")
             .medication("Zestril")
+            .bloodType(BloodType.ANEGATIVE)
             .build();
 
 
@@ -293,6 +305,7 @@ public class DataLoader implements CommandLineRunner {
             .build();
 
 
+
         /**
          *  Patient Details
          *
@@ -449,6 +462,151 @@ public class DataLoader implements CommandLineRunner {
         patientService.save(patient9);
         patientService.save(patientX);
 
+        /**
+         *  Emergency Contact Details
+         *
+         */
+
+        EmergencyContact pat1 = EmergencyContact
+            .builder()
+            .firstName("Paul")
+            .lastName("Krauss")
+            .relationship("Brother")
+            .phoneNumber("(613)-923-9274")
+            .patient(patient1)
+            .build();
+
+        EmergencyContact pat12 = EmergencyContact
+            .builder()
+            .firstName("Kara")
+            .lastName("Krauss")
+            .relationship("Wife")
+            .phoneNumber("(613)-923-1243")
+            .patient(patient1)
+            .build();
+
+        EmergencyContact pat2 = EmergencyContact
+            .builder()
+            .firstName("Drew")
+            .lastName("Gales")
+            .relationship("Husband")
+            .phoneNumber("(613)-987-9274")
+            .patient(patient2)
+            .build();
+
+        EmergencyContact pat3 = EmergencyContact
+            .builder()
+            .firstName("Carlos")
+            .lastName("Sanchez")
+            .relationship("Friend")
+            .phoneNumber("(613)-841-3294")
+            .patient(patient3)
+            .build();
+
+        EmergencyContact pat31 = EmergencyContact
+            .builder()
+            .firstName("Mona")
+            .lastName("Vinci")
+            .relationship("Friend")
+            .phoneNumber("(613)-486-2631")
+            .patient(patient3)
+            .build();
+
+        EmergencyContact pat4 = EmergencyContact
+            .builder()
+            .firstName("Rachel")
+            .lastName("Hufford")
+            .relationship("Wife")
+            .phoneNumber("(613)-142-2631")
+            .patient(patient4)
+            .build();
+
+        EmergencyContact pat5 = EmergencyContact
+            .builder()
+            .firstName("Lavonne")
+            .lastName("Delia")
+            .relationship("Friend")
+            .phoneNumber("(613)-229-2631")
+            .patient(patient5)
+            .build();
+
+        EmergencyContact pat6 = EmergencyContact
+            .builder()
+            .firstName("Sofia")
+            .lastName("Waynick")
+            .relationship("Wife")
+            .phoneNumber("(613)-324-6363")
+            .patient(patient6)
+            .build();
+
+        EmergencyContact pat61 = EmergencyContact
+            .builder()
+            .firstName("Clara")
+            .lastName("Waynick")
+            .relationship("Sister")
+            .phoneNumber("(613)-845-7161")
+            .patient(patient6)
+            .build();
+
+        EmergencyContact pat7 = EmergencyContact
+            .builder()
+            .firstName("Avery")
+            .lastName("Phong")
+            .relationship("Friend")
+            .phoneNumber("(613)-856-6363")
+            .patient(patient7)
+            .build();
+
+        EmergencyContact pat8 = EmergencyContact
+            .builder()
+            .firstName("Marcel")
+            .lastName("Brownlow")
+            .relationship("Wife")
+            .phoneNumber("(613)-324-6363")
+            .patient(patient8)
+            .build();
+
+        EmergencyContact pat9 = EmergencyContact
+            .builder()
+            .firstName("Lavon")
+            .lastName("Whittemore")
+            .relationship("Friend")
+            .phoneNumber("(613)-253-2163")
+            .patient(patient9)
+            .build();
+
+        EmergencyContact pat91 = EmergencyContact
+            .builder()
+            .firstName("Teressa")
+            .lastName("Marmo")
+            .relationship("Sister")
+            .phoneNumber("(613)-234-2463")
+            .patient(patient9)
+            .build();
+
+        EmergencyContact patx = EmergencyContact
+            .builder()
+            .firstName("Klara")
+            .lastName("Tinkham")
+            .relationship("Friend")
+            .phoneNumber("(613)-956-6123")
+            .patient(patientX)
+            .build();
+
+        emergencyContactService.save(pat1);
+        emergencyContactService.save(pat12);
+        emergencyContactService.save(pat2);
+        emergencyContactService.save(pat3);
+        emergencyContactService.save(pat31);
+        emergencyContactService.save(pat4);
+        emergencyContactService.save(pat5);
+        emergencyContactService.save(pat6);
+        emergencyContactService.save(pat61);
+        emergencyContactService.save(pat7);
+        emergencyContactService.save(pat8);
+        emergencyContactService.save(pat9);
+        emergencyContactService.save(pat91);
+        emergencyContactService.save(patx);
     }
 
     public void loadDoctors() {
