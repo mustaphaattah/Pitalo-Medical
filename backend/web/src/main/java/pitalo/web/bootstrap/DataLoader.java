@@ -7,11 +7,9 @@ import pitalo.domain.Address;
 import pitalo.domain.Patient.*;
 import pitalo.domain.Sex;
 import pitalo.domain.Staff.Doctor;
+import pitalo.domain.Staff.Nurse;
 import pitalo.domain.Staff.Specialty;
-import pitalo.persistence.Services.DoctorService;
-import pitalo.persistence.Services.EmergencyContactService;
-import pitalo.persistence.Services.PatientService;
-import pitalo.persistence.Services.SpecialtyService;
+import pitalo.persistence.Services.*;
 
 import java.time.LocalDate;
 
@@ -30,6 +28,9 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private EmergencyContactService emergencyContactService;
 
+    @Autowired
+    private NurseService nurseService;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -41,6 +42,43 @@ public class DataLoader implements CommandLineRunner {
 
         loadPatients();
         loadDoctors();
+        loadNurses();
+    }
+
+    private void loadNurses() {
+
+        Nurse selma = Nurse
+            .builder()
+            .firstName("Selma")
+            .middleName("H.")
+            .lastName("Devito")
+            .email("selma@pitalo.com")
+            .phoneNumber("(613)-126-3628")
+            .sex(Sex.Female)
+            .build();
+
+        Nurse rickey = Nurse
+            .builder()
+            .firstName("Rickey")
+            .middleName("A.")
+            .lastName("Cavender")
+            .email("rickey@pitalo.com")
+            .phoneNumber("(613)-421-3458")
+            .sex(Sex.Male)
+            .build();
+
+        Nurse alex = Nurse
+            .builder()
+            .firstName("Alexia")
+            .lastName("Pigman")
+            .email("alexia@pitalo.com")
+            .phoneNumber("(613)-653-8204")
+            .sex(Sex.Female)
+            .build();
+
+        nurseService.save(selma);
+        nurseService.save(rickey);
+        nurseService.save(alex);
     }
 
 
@@ -314,6 +352,7 @@ public class DataLoader implements CommandLineRunner {
         Patient patient1 = Patient
             .builder()
             .firstName("John")
+            .middleName("R.")
             .lastName("Krauss")
             .healthNumber("4356-937-271-DS")
             .occupation("Farmer")
@@ -328,6 +367,7 @@ public class DataLoader implements CommandLineRunner {
         Patient patient2 = Patient
             .builder()
             .firstName("Maura")
+            .middleName("W.")
             .lastName("Gales")
             .healthNumber("2293-327-331-DS")
             .occupation("Baker")
@@ -355,6 +395,7 @@ public class DataLoader implements CommandLineRunner {
         Patient patient4 = Patient
             .builder()
             .firstName("Noel")
+            .middleName("N.")
             .lastName("Hufford")
             .healthNumber("3871-030-311-DS")
             .occupation("Policeman")
@@ -383,6 +424,7 @@ public class DataLoader implements CommandLineRunner {
         Patient patient6 = Patient
             .builder()
             .firstName("Emilio")
+            .middleName("K.")
             .lastName("Waynick")
             .healthNumber("6986-964-171-DS")
             .occupation("Bus Driver")
@@ -411,6 +453,7 @@ public class DataLoader implements CommandLineRunner {
         Patient patient8 = Patient
             .builder()
             .firstName("Breanna")
+            .middleName("M.")
             .lastName("Brownlow")
             .healthNumber("5322-541-641-DS")
             .occupation("Cleaner")
@@ -425,6 +468,7 @@ public class DataLoader implements CommandLineRunner {
         Patient patient9 = Patient
             .builder()
             .firstName("Libby")
+            .middleName("T.")
             .lastName("Marmo")
             .healthNumber("3464-888-921-DS")
             .occupation("Florist")
@@ -650,6 +694,7 @@ public class DataLoader implements CommandLineRunner {
         Doctor charise = Doctor
             .builder()
             .firstName("Charise")
+            .middleName("T.")
             .lastName("Broome")
             .email("chbroome@pitalo.com")
             .specialty(cardio)
@@ -660,6 +705,7 @@ public class DataLoader implements CommandLineRunner {
         Doctor elvina = Doctor
             .builder()
             .firstName("Elvina")
+            .middleName("S.")
             .lastName("Abdul")
             .email("elabdul@pitalo.com")
             .specialty(gyna)
@@ -670,6 +716,7 @@ public class DataLoader implements CommandLineRunner {
         Doctor jonah = Doctor
             .builder()
             .firstName("Jonah")
+            .middleName("D.")
             .lastName("Swinton")
             .email("joswinton@pitalo.com")
             .specialty(nephro)
@@ -690,6 +737,7 @@ public class DataLoader implements CommandLineRunner {
         Doctor garrett = Doctor
             .builder()
             .firstName("Garrett")
+            .middleName("P.")
             .lastName("Deleon")
             .email("gdeleon@pitalo.com")
             .specialty(emer)
@@ -700,6 +748,7 @@ public class DataLoader implements CommandLineRunner {
         Doctor ellen = Doctor
             .builder()
             .firstName("Ellen")
+            .middleName("G.")
             .lastName("Behler")
             .email("ellbehler@pitalo.com")
             .specialty(emer)
