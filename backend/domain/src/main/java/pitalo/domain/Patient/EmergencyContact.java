@@ -1,9 +1,7 @@
 package pitalo.domain.Patient;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import pitalo.domain.BaseEntity;
 
 import javax.persistence.Column;
@@ -17,6 +15,7 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(exclude = "patient")
 public class EmergencyContact extends BaseEntity {
 
     @NotEmpty(message = "First Name is required")
@@ -33,6 +32,7 @@ public class EmergencyContact extends BaseEntity {
     @Pattern(regexp = "\\(\\d{3}\\)[\\-]?\\d{3}[\\-]?\\d{4}", message = "Phone number must match format: (123)-123-1234")
     private String phoneNumber;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "patient_id")
     private Patient patient;

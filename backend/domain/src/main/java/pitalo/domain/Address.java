@@ -1,5 +1,6 @@
 package pitalo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,6 +37,7 @@ public class Address extends BaseEntity {
     private String addressLine2;
 
     @OneToOne(mappedBy = "address")
+    @JsonIgnore
     private Person person;
 
     @Builder

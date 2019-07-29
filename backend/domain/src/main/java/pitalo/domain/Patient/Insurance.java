@@ -1,5 +1,6 @@
 package pitalo.domain.Patient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,6 +35,7 @@ public class Insurance extends BaseEntity {
     @Column(name = "group_number")
     private String groupNumber;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "insurance")
     private Patient patient;
 

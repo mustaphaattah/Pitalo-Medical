@@ -1,52 +1,52 @@
 package pitalo.domain.Patient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import pitalo.domain.BaseEntity;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import java.util.List;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode(exclude = "patient")
 public class MedicalHistory extends BaseEntity {
 
     @Singular("allergy")
-    @ElementCollection
-    private List<String> allergies;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> allergies;
 
     @Singular("illness")
-    @ElementCollection
-    private List<String> illnesses;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> illnesses;
 
     @Singular("injury")
-    @ElementCollection
-    private List<String> injuries;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> injuries;
 
     @Singular("surgery")
-    @ElementCollection
-    private List<String> surgeries;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> surgeries;
 
     @Singular("medication")
-    @ElementCollection
-    private List<String> medications;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> medications;
 
     @Singular("lifeStyle")
-    @ElementCollection
-    private List<String> lifeStyle;
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> lifeStyle;
 
     @Column(name = "blood_type")
     private BloodType bloodType;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "medicalHistory")
     private Patient patient;
 
-    public MedicalHistory(Long id, List<String> allergies, List<String> illnesses, List<String> injuries, List<String> surgeries, List<String> medications, List<String> lifeStyle, BloodType bloodType) {
+    public MedicalHistory(Long id, Set<String> allergies, Set<String> illnesses, Set<String> injuries, Set<String> surgeries, Set<String> medications, Set<String> lifeStyle, BloodType bloodType) {
         super(id);
         this.allergies = allergies;
         this.illnesses = illnesses;
