@@ -9,9 +9,13 @@ import pitalo.domain.Sex;
 import pitalo.domain.Staff.Doctor;
 import pitalo.domain.Staff.Nurse;
 import pitalo.domain.Staff.Specialty;
+import pitalo.domain.Visitation.Visitation;
+import pitalo.domain.Visitation.VisitationType.*;
+import pitalo.domain.Visitation.Vitals;
 import pitalo.persistence.Services.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -31,6 +35,9 @@ public class DataLoader implements CommandLineRunner {
     @Autowired
     private NurseService nurseService;
 
+    @Autowired
+    private VisitationService visitationService;
+
 
     @Override
     public void run(String... args) throws Exception {
@@ -39,13 +46,6 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private void loadData() {
-
-        loadPatients();
-        loadDoctors();
-        loadNurses();
-    }
-
-    private void loadNurses() {
 
         Nurse selma = Nurse
             .builder()
@@ -79,10 +79,6 @@ public class DataLoader implements CommandLineRunner {
         nurseService.save(selma);
         nurseService.save(rickey);
         nurseService.save(alex);
-    }
-
-
-    public void loadPatients() {
 
         /**
          * Medical History Details
@@ -651,9 +647,12 @@ public class DataLoader implements CommandLineRunner {
         emergencyContactService.save(pat9);
         emergencyContactService.save(pat91);
         emergencyContactService.save(patx);
-    }
 
-    public void loadDoctors() {
+        /**
+         *  Specialty Data
+         *
+         */
+
         Specialty cardio = Specialty
             .builder()
             .name("Cardiology")
@@ -773,6 +772,171 @@ public class DataLoader implements CommandLineRunner {
         doctorService.save(tami);
         doctorService.save(jonah);
         doctorService.save(elvina);
+
+
+        /**
+         *  Visitation
+         *
+         */
+
+        Vitals vitals1 = Vitals
+            .builder()
+            .bloodPressure("120/80")
+            .bodyTemperature("37.0C")
+            .pulseRate("80")
+            .weight("180lbs")
+            .respirationRate("15")
+            .build();
+
+        Vitals vitals2 = Vitals
+            .builder()
+            .bloodPressure("190/90")
+            .bodyTemperature("36.8C")
+            .pulseRate("100")
+            .weight("200lbs")
+            .respirationRate("16")
+            .build();
+
+        Vitals vitals3 = Vitals
+            .builder()
+            .bloodPressure("150/90")
+            .bodyTemperature("36.7C")
+            .pulseRate("70")
+            .weight("165lbs")
+            .respirationRate("13")
+            .build();
+
+        Vitals vitals4 = Vitals
+            .builder()
+            .bloodPressure("140/85")
+            .bodyTemperature("36.9C")
+            .pulseRate("60")
+            .weight("190lbs")
+            .respirationRate("15")
+            .build();
+
+        Vitals vitals5 = Vitals
+            .builder()
+            .bloodPressure("125/82")
+            .bodyTemperature("36.8C")
+            .pulseRate("75")
+            .weight("210lbs")
+            .respirationRate("14")
+            .build();
+
+        Vitals vitals6 = Vitals
+            .builder()
+            .bloodPressure("135/85")
+            .bodyTemperature("37.1C")
+            .pulseRate("90")
+            .weight("192lbs")
+            .respirationRate("15")
+            .build();
+
+        /**
+         *  VisitationType Details
+         *
+         */
+
+        VisitationType appoint1 = Appointment
+            .builder()
+            .appointmentStatus(AppointmentStatus.Pending)
+            .build();
+
+        VisitationType appoint2 = Appointment
+            .builder()
+            .appointmentStatus(AppointmentStatus.Completed)
+            .build();
+
+        VisitationType walk1 = WalkIn
+            .builder()
+            .build();
+
+        VisitationType walk2 = WalkIn
+            .builder()
+            .build();
+
+        VisitationType emer1 = Emergency
+            .builder()
+            .emergencyCode(EmergencyCode.HIGH_IMMEDIATE)
+            .build();
+
+        VisitationType emer2 = Emergency
+            .builder()
+            .emergencyCode(EmergencyCode.LOW_SEVERITY)
+            .build();
+
+        /**
+         *  Visitation Data
+         *
+         */
+
+        Visitation visit1 = Visitation
+            .builder()
+            .vitals(vitals1)
+            .doctor(elvina)
+            .nurse(selma)
+            .visitationType(appoint1)
+            .time(LocalDateTime.now())
+            .patient(patient2)
+            .build();
+
+        Visitation visit2 = Visitation
+            .builder()
+            .vitals(vitals2)
+            .doctor(jonah)
+            .nurse(selma)
+            .visitationType(appoint2)
+            .time(LocalDateTime.now())
+            .patient(patient1)
+            .build();
+
+        Visitation visit3 = Visitation
+            .builder()
+            .vitals(vitals3)
+            .doctor(tami)
+            .nurse(rickey)
+            .visitationType(emer1)
+            .time(LocalDateTime.now())
+            .patient(patient3)
+            .build();
+
+        Visitation visit4 = Visitation
+            .builder()
+            .vitals(vitals4)
+            .doctor(garrett)
+            .nurse(rickey)
+            .visitationType(emer2)
+            .time(LocalDateTime.now())
+            .patient(patient3)
+            .build();
+
+        Visitation visit5 = Visitation
+            .builder()
+            .vitals(vitals5)
+            .doctor(ellen)
+            .nurse(alex)
+            .visitationType(walk1)
+            .time(LocalDateTime.now())
+            .patient(patient5)
+            .build();
+
+        Visitation visit6 = Visitation
+            .builder()
+            .vitals(vitals6)
+            .doctor(elvina)
+            .nurse(alex)
+            .visitationType(walk2)
+            .time(LocalDateTime.now())
+            .patient(patient8)
+            .build();
+
+        visitationService.save(visit1);
+        visitationService.save(visit2);
+        visitationService.save(visit3);
+        visitationService.save(visit4);
+        visitationService.save(visit5);
+        visitationService.save(visit6);
 
     }
 }

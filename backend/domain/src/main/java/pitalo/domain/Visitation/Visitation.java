@@ -1,5 +1,6 @@
 package pitalo.domain.Visitation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,10 +31,12 @@ public class Visitation extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "nurse_id")
+    @JsonIgnore
     private Nurse nurse;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
+    @JsonIgnore
     private Doctor doctor;
 
     private String diagnosis;
@@ -41,7 +44,8 @@ public class Visitation extends BaseEntity {
     private String complaint;
 
     @ManyToOne
-    @JoinColumn(name = "visitations")
+    @JoinColumn(name = "patient_id")
+    @JsonIgnore
     private Patient patient;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")

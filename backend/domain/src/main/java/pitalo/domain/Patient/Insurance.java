@@ -1,10 +1,7 @@
 package pitalo.domain.Patient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import pitalo.domain.BaseEntity;
 
@@ -18,6 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@EqualsAndHashCode(exclude = {"patient"})
 public class Insurance extends BaseEntity {
 
     @NotEmpty(message = "Provider is required")

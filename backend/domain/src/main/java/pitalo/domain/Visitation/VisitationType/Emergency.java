@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import pitalo.domain.Visitation.Visitation;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 public class Emergency extends VisitationType  {
 
-    @NotEmpty(message = "Emergency code is required")
+    @NotNull(message = "Emergency code is required")
     private EmergencyCode emergencyCode;
 
     @Builder

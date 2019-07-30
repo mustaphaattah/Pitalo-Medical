@@ -1,5 +1,6 @@
 package pitalo.domain.Visitation.VisitationType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public abstract class VisitationType {
     private Long id;
 
     @OneToOne(mappedBy = "visitationType")
+    @JsonIgnore
     private Visitation visitation;
 
 }

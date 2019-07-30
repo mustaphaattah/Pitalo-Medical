@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import pitalo.domain.Visitation.Visitation;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -15,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 public class Appointment extends VisitationType  {
 
-    @NotEmpty(message = "Appointment Status is required")
+    @NotNull(message = "Appointment Status is required")
     private AppointmentStatus appointmentStatus;
 
     @Builder

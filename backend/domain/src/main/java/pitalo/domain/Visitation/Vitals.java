@@ -1,5 +1,6 @@
 package pitalo.domain.Visitation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,6 +42,7 @@ public class Vitals extends BaseEntity {
 
 
     @OneToOne(mappedBy = "vitals")
+    @JsonIgnore
     private Visitation visitation;
 
     @Builder
