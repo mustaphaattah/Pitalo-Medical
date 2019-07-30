@@ -15,7 +15,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
@@ -62,8 +62,7 @@ class VisitationServiceTest {
     @Test
     void findByIdNotFound() {
         when(visitationRepository.findById(anyLong())).thenReturn(Optional.empty());
-        Visitation visitation = visitationService.findById(ID);
-        assertNull(visitation);
+        assertThrows(RuntimeException.class, () -> visitationService.findById(ID));
     }
 
     @Test
