@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pitalo.domain.Visitation.Visitation;
+import pitalo.persistence.Exceptions.VisitationNotFoundException;
 import pitalo.persistence.Repositories.VisitationRepository;
 
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ class VisitationServiceTest {
     @Test
     void findByIdNotFound() {
         when(visitationRepository.findById(anyLong())).thenReturn(Optional.empty());
-        assertThrows(RuntimeException.class, () -> visitationService.findById(ID));
+        assertThrows(VisitationNotFoundException.class, () -> visitationService.findById(ID));
     }
 
     @Test

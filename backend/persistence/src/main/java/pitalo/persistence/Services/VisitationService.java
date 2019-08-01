@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 import pitalo.domain.Patient.Patient;
 import pitalo.domain.Visitation.Visitation;
+import pitalo.persistence.Exceptions.VisitationNotFoundException;
 import pitalo.persistence.Repositories.VisitationRepository;
 
 import java.lang.reflect.Field;
@@ -55,7 +56,8 @@ public class VisitationService implements CrudService<Visitation, Long> {
 
     @Override
     public Visitation findById(Long id) {
-        return visitationRepository.findById(id).orElseThrow(RuntimeException::new);
+        return visitationRepository.findById(id).orElseThrow(
+            () -> new VisitationNotFoundException(String.format("Visitation with id: '%s' does not exist", id)));
     }
 
     @Override
@@ -64,7 +66,8 @@ public class VisitationService implements CrudService<Visitation, Long> {
     }
 
     public Visitation update(Long id, Map<String, String> updates, Patient patient) {
-        if (findByPatient(id, patient)) {
+        boolean patientHasVisitation = findByPatient(id, patient);
+        if (patientHasVisitation) {
             Visitation visitation = findById(id);
             updates.forEach((key, value) -> {
                 Field field = ReflectionUtils.findField(Visitation.class, key);
@@ -73,7 +76,9 @@ public class VisitationService implements CrudService<Visitation, Long> {
             });
             return save(visitation);
         }
-        return null;
+        throw new VisitationNotFoundException(
+            String.format("Patient with id: '%s' has no visitation with id: '%s'", patient.getId(), id)
+        );
     }
 
     @Override
