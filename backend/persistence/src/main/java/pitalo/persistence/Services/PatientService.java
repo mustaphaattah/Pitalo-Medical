@@ -12,9 +12,11 @@ import java.util.List;
 public class PatientService implements CrudService<Patient, Long> {
 
     private final PatientRepository patientRepository;
+    private final EmergencyContactService emergencyContactService;
 
-    public PatientService(PatientRepository patientRepository) {
+    public PatientService(PatientRepository patientRepository, EmergencyContactService emergencyContactService) {
         this.patientRepository = patientRepository;
+        this.emergencyContactService = emergencyContactService;
     }
 
     @Override
@@ -34,7 +36,17 @@ public class PatientService implements CrudService<Patient, Long> {
 
     @Override
     public Patient save(Patient patient) {
-        return patientRepository.save(patient);
+        Patient savedPatient = patientRepository.save(patient);
+
+        if (savedPatient.getEmergencyContacts() != null) {
+            savedPatient
+                .getEmergencyContacts()
+                .forEach(contact -> {
+                    contact.setPatient(savedPatient);
+                    emergencyContactService.save(contact);
+                });
+        }
+        return savedPatient;
     }
 
     @Override

@@ -58,8 +58,7 @@ public abstract class Person {
 
     @PrePersist
     protected void init() {
-
-        this.registrationDate = LocalDateTime.now();
+        if (this.registrationDate == null) this.registrationDate = LocalDateTime.now();
     }
 
 }

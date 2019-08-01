@@ -63,4 +63,11 @@ public class Visitation extends BaseEntity {
         this.patient = patient;
         this.time = time;
     }
+
+    @PrePersist
+    protected void init() {
+
+        if (time == null)
+            this.time = LocalDateTime.now();
+    }
 }

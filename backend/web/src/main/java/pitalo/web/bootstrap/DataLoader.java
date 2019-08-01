@@ -16,6 +16,7 @@ import pitalo.persistence.Services.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -54,6 +55,7 @@ public class DataLoader implements CommandLineRunner {
             .lastName("Devito")
             .email("selma@pitalo.com")
             .phoneNumber("(613)-126-3628")
+            .registrationDate(LocalDateTime.of(2000, Month.FEBRUARY, 17, 9, 15))
             .sex(Sex.Female)
             .build();
 
@@ -64,6 +66,7 @@ public class DataLoader implements CommandLineRunner {
             .lastName("Cavender")
             .email("rickey@pitalo.com")
             .phoneNumber("(613)-421-3458")
+            .registrationDate(LocalDateTime.of(2008, Month.APRIL, 30, 12, 49))
             .sex(Sex.Male)
             .build();
 
@@ -73,6 +76,7 @@ public class DataLoader implements CommandLineRunner {
             .lastName("Pigman")
             .email("alexia@pitalo.com")
             .phoneNumber("(613)-653-8204")
+            .registrationDate(LocalDateTime.of(2010, Month.SEPTEMBER, 2, 8, 38))
             .sex(Sex.Female)
             .build();
 
@@ -357,6 +361,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address1)
             .medicalHistory(history1)
             .phoneNumber("(613)-890-9876")
+            .registrationDate(LocalDateTime.of(2005, Month.AUGUST, 21, 14, 21))
             .sex(Sex.Male)
             .build();
 
@@ -372,6 +377,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address2)
             .phoneNumber("(613)-836-8374")
             .medicalHistory(history6)
+            .registrationDate(LocalDateTime.of(2008, Month.JULY, 2, 15, 1))
             .sex(Sex.Female)
             .build();
 
@@ -385,6 +391,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address3)
             .phoneNumber("(613)-223-4623")
             .medicalHistory(history8)
+            .registrationDate(LocalDateTime.of(2003, Month.DECEMBER, 29, 10, 19))
             .sex(Sex.Female)
             .build();
 
@@ -400,6 +407,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address4)
             .phoneNumber("(613)-986-1342")
             .medicalHistory(history2)
+            .registrationDate(LocalDateTime.of(2012, Month.MARCH, 16, 9, 13))
             .sex(Sex.Male)
             .build();
 
@@ -414,6 +422,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address5)
             .phoneNumber("(613)-892-7348")
             .medicalHistory(history4)
+            .registrationDate(LocalDateTime.of(2009, Month.OCTOBER, 17, 15, 25))
             .sex(Sex.Male)
             .build();
 
@@ -429,6 +438,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address6)
             .phoneNumber("(613)-753-9864")
             .medicalHistory(history5)
+            .registrationDate(LocalDateTime.of(2012, Month.JANUARY, 12, 11, 28))
             .sex(Sex.Male)
             .build();
 
@@ -443,6 +453,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address7)
             .phoneNumber("(613)-453-8763")
             .medicalHistory(historyx)
+            .registrationDate(LocalDateTime.of(2013, Month.NOVEMBER, 16, 13, 07))
             .sex(Sex.Male)
             .build();
 
@@ -458,6 +469,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address8)
             .phoneNumber("(613)-872-8963")
             .medicalHistory(history3)
+            .registrationDate(LocalDateTime.of(2002, Month.JUNE, 23, 5, 28))
             .sex(Sex.Female)
             .build();
 
@@ -472,6 +484,7 @@ public class DataLoader implements CommandLineRunner {
             .address(address9)
             .phoneNumber("(613)-324-8962")
             .medicalHistory(history7)
+            .registrationDate(LocalDateTime.of(2014, Month.MAY, 28, 16, 58))
             .sex(Sex.Female)
             .build();
 
@@ -486,6 +499,7 @@ public class DataLoader implements CommandLineRunner {
             .address(addressx)
             .phoneNumber("(613)-478-9286")
             .medicalHistory(history9)
+            .registrationDate(LocalDateTime.of(2006, Month.AUGUST, 31, 10, 21))
             .sex(Sex.Female)
             .build();
 
@@ -698,6 +712,7 @@ public class DataLoader implements CommandLineRunner {
             .email("chbroome@pitalo.com")
             .specialty(cardio)
             .phoneNumber("(613)-754-7285")
+            .registrationDate(LocalDateTime.of(2002, Month.AUGUST, 2, 14, 21))
             .sex(Sex.Female)
             .build();
 
@@ -709,6 +724,7 @@ public class DataLoader implements CommandLineRunner {
             .email("elabdul@pitalo.com")
             .specialty(gyna)
             .phoneNumber("(613)-918-8962")
+            .registrationDate(LocalDateTime.of(2003, Month.SEPTEMBER, 21, 15, 18))
             .sex(Sex.Female)
             .build();
 
@@ -720,6 +736,7 @@ public class DataLoader implements CommandLineRunner {
             .email("joswinton@pitalo.com")
             .specialty(nephro)
             .phoneNumber("(613)-977-0882")
+            .registrationDate(LocalDateTime.of(2008, Month.MAY, 17, 07, 15))
             .sex(Sex.Male)
             .build();
 
@@ -730,6 +747,7 @@ public class DataLoader implements CommandLineRunner {
             .email("takerley@pitalo.com")
             .specialty(gen)
             .phoneNumber("(613)-232-2322")
+            .registrationDate(LocalDateTime.of(2004, Month.DECEMBER, 7, 17, 29))
             .sex(Sex.Female)
             .build();
 
@@ -741,6 +759,7 @@ public class DataLoader implements CommandLineRunner {
             .email("gdeleon@pitalo.com")
             .specialty(emer)
             .phoneNumber("(613)-764-4548")
+            .registrationDate(LocalDateTime.of(2007, Month.FEBRUARY, 28, 8, 47))
             .sex(Sex.Male)
             .build();
 
@@ -752,6 +771,7 @@ public class DataLoader implements CommandLineRunner {
             .email("ellbehler@pitalo.com")
             .specialty(emer)
             .phoneNumber("(613)-968-9567")
+            .registrationDate(LocalDateTime.of(2001, Month.NOVEMBER, 6, 18, 11))
             .sex(Sex.Female)
             .build();
 
@@ -762,6 +782,7 @@ public class DataLoader implements CommandLineRunner {
             .email("slavoie@pitalo.com")
             .specialty(pedia)
             .phoneNumber("(613)-225-3628")
+            .registrationDate(LocalDateTime.of(2003, Month.JULY, 17, 4, 51))
             .sex(Sex.Female)
             .build();
 
@@ -877,7 +898,7 @@ public class DataLoader implements CommandLineRunner {
             .doctor(elvina)
             .nurse(selma)
             .visitationType(appoint1)
-            .time(LocalDateTime.now())
+            .time(LocalDateTime.of(2008, Month.JUNE, 18, 13, 32))
             .patient(patient2)
             .build();
 
@@ -887,7 +908,7 @@ public class DataLoader implements CommandLineRunner {
             .doctor(jonah)
             .nurse(selma)
             .visitationType(appoint2)
-            .time(LocalDateTime.now())
+            .time(LocalDateTime.of(2010, Month.NOVEMBER, 5, 9, 43))
             .patient(patient1)
             .build();
 
@@ -897,7 +918,7 @@ public class DataLoader implements CommandLineRunner {
             .doctor(tami)
             .nurse(rickey)
             .visitationType(emer1)
-            .time(LocalDateTime.now())
+            .time(LocalDateTime.of(2006, Month.APRIL, 26, 11, 14))
             .patient(patient3)
             .build();
 
@@ -907,7 +928,7 @@ public class DataLoader implements CommandLineRunner {
             .doctor(garrett)
             .nurse(rickey)
             .visitationType(emer2)
-            .time(LocalDateTime.now())
+            .time(LocalDateTime.of(2010, Month.DECEMBER, 8, 19, 24))
             .patient(patient3)
             .build();
 
@@ -917,7 +938,7 @@ public class DataLoader implements CommandLineRunner {
             .doctor(ellen)
             .nurse(alex)
             .visitationType(walk1)
-            .time(LocalDateTime.now())
+            .time(LocalDateTime.of(2014, Month.FEBRUARY, 28, 10, 46))
             .patient(patient5)
             .build();
 
@@ -927,7 +948,7 @@ public class DataLoader implements CommandLineRunner {
             .doctor(elvina)
             .nurse(alex)
             .visitationType(walk2)
-            .time(LocalDateTime.now())
+            .time(LocalDateTime.of(2006, Month.OCTOBER, 13, 19, 29))
             .patient(patient8)
             .build();
 
