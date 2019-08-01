@@ -59,9 +59,12 @@ public class PatientController {
     }
 
     @GetMapping("/{id}/visitations")
-    public ResponseEntity<?> getVisitations(@PathVariable("id") Long id) {
+    public ResponseEntity<?> getVisitations(
+        @PathVariable("id") Long id,
+        @RequestParam(name = "type", required = false) String type
+    ) {
         Patient patient = patientService.findById(id);
-        List<Visitation> visitations = visitationService.findAllByPatient(patient);
+        List<Visitation> visitations = visitationService.findAllByPatient(patient, type);
         return new ResponseEntity<>(visitations, HttpStatus.OK);
     }
 
@@ -69,7 +72,7 @@ public class PatientController {
     public ResponseEntity<?> updateVisitation(
         @PathVariable("id") Long id,
         @PathVariable("visitationId") Long visitationId,
-        @RequestBody Map<String, String> updates
+        @RequestBody Map<String, Object> updates
     ) {
         Patient patient = patientService.findById(id);
         Visitation visitation = visitationService.update(visitationId, updates, patient);

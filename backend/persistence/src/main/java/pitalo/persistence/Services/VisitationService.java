@@ -31,11 +31,18 @@ public class VisitationService implements CrudService<Visitation, Long> {
         return visitations;
     }
 
-    public List<Visitation> findAllByPatient(Patient patient) {
-        List<Visitation> visitations = new ArrayList<>();
-        visitationRepository
-            .findVisitationsByPatient(patient)
-            .forEach(visitations::add);
+    public List<Visitation> findAllByPatient(Patient patient, String type) {
+        List<Visitation> visitations;
+        visitations = visitationRepository
+            .findVisitationsByPatient(patient);
+
+        if (type != null) {
+            visitations = visitations
+                .stream()
+                .filter(visit -> visit.getVisitationType().getType().equals(type))
+                .collect(Collectors.toList());
+        }
+
         return visitations;
     }
 
@@ -65,7 +72,7 @@ public class VisitationService implements CrudService<Visitation, Long> {
         return visitationRepository.save(visitation);
     }
 
-    public Visitation update(Long id, Map<String, String> updates, Patient patient) {
+    public Visitation update(Long id, Map<String, Object> updates, Patient patient) {
         boolean patientHasVisitation = findByPatient(id, patient);
         if (patientHasVisitation) {
             Visitation visitation = findById(id);

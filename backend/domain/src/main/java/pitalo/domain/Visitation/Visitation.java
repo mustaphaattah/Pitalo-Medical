@@ -51,8 +51,10 @@ public class Visitation extends BaseEntity {
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime time;
 
+    private Status status;
+
     @Builder
-    public Visitation(Long id, VisitationType visitationType, Vitals vitals, Nurse nurse, Doctor doctor, String diagnosis, String complaint, Patient patient, LocalDateTime time) {
+    public Visitation(Long id, VisitationType visitationType, Vitals vitals, Nurse nurse, Doctor doctor, String diagnosis, String complaint, Patient patient, LocalDateTime time, Status status) {
         super(id);
         this.visitationType = visitationType;
         this.vitals = vitals;
@@ -62,6 +64,7 @@ public class Visitation extends BaseEntity {
         this.complaint = complaint;
         this.patient = patient;
         this.time = time;
+        this.status = status;
     }
 
     @PrePersist
@@ -69,5 +72,7 @@ public class Visitation extends BaseEntity {
 
         if (time == null)
             this.time = LocalDateTime.now();
+
+        this.status = Status.Pending;
     }
 }

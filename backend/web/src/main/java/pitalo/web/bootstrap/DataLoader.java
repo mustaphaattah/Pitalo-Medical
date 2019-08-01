@@ -859,12 +859,10 @@ public class DataLoader implements CommandLineRunner {
 
         VisitationType appoint1 = Appointment
             .builder()
-            .appointmentStatus(AppointmentStatus.Pending)
             .build();
 
         VisitationType appoint2 = Appointment
             .builder()
-            .appointmentStatus(AppointmentStatus.Completed)
             .build();
 
         VisitationType walk1 = WalkIn
