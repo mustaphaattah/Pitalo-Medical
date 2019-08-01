@@ -35,14 +35,17 @@ public class PatientService implements CrudService<Patient, Long> {
         switch (searchBy) {
             case "firstName":
                 return patientRepository
-                    .findAllByFirstNameLike(String.format("%%%s%%", value));
-
+                    .findAllByFirstNameStartingWith(String.format("%s", value));
+            case "lastName":
+                return patientRepository
+                    .findAllByLastNameStartingWith(String.format("%s", value));
+            case "healthNumber":
+                return patientRepository
+                    .findAllByHealthNumberStartingWith(String.format("%s", value));
             default:
                 return new ArrayList<>();
         }
     }
-
-
 
     @Override
     public Patient findById(Long id) {

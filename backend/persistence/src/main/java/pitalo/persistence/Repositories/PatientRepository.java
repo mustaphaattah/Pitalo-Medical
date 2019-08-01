@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface PatientRepository extends CrudRepository<Patient, Long> {
 
-    List<Patient> findAllByFirstNameLike(String firstName);
+    List<Patient> findAllByFirstNameStartingWith(String firstName);
+    List<Patient> findAllByLastNameStartingWith(String lastName);
+    List<Patient> findAllByHealthNumberStartingWith(String healthNumber);
 }
