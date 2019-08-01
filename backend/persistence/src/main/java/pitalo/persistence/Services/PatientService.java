@@ -2,6 +2,7 @@ package pitalo.persistence.Services;
 
 import org.springframework.stereotype.Service;
 import pitalo.domain.Patient.Patient;
+import pitalo.persistence.Exceptions.PatientNotFoundException;
 import pitalo.persistence.Repositories.PatientRepository;
 
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class PatientService implements CrudService<Patient, Long> {
 
     @Override
     public Patient findById(Long id) {
-        return patientRepository.findById(id).orElse(null);
+        return patientRepository.findById(id)
+            .orElseThrow(() -> new PatientNotFoundException(String.format("Patient with id: '%s' does not exist", id)));
     }
 
     @Override

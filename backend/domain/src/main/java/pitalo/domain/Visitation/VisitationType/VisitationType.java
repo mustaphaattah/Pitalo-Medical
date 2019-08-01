@@ -23,4 +23,7 @@ public abstract class VisitationType {
     @JsonIgnore
     private Visitation visitation;
 
+    @Column(name = "type", updatable = false)
+    private String type;
+
 }

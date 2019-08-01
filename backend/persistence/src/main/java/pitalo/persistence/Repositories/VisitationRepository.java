@@ -11,5 +11,4 @@ import java.util.List;
 public interface VisitationRepository extends CrudRepository<Visitation, Long> {
 
     List<Visitation> findVisitationsByPatient(Patient patient);
-    
 }

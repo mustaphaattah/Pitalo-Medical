@@ -22,11 +22,16 @@ public class VisitationController {
 
 
     @GetMapping({ "/", ""})
-    public ResponseEntity<?> findAll() {
+    public ResponseEntity<?> findAll(@RequestParam(name = "type", required = false) String type) {
+
+        if (type != null) {
+            List<Visitation> visitations = visitationService.findAllByVisitationType(type);
+            return new ResponseEntity<>(visitations, HttpStatus.OK);
+        }
 
         List<Visitation> visitations = visitationService.findAll();
         return new ResponseEntity<>(visitations, HttpStatus.OK);
-    }
+}
 
     @PostMapping({ "/", ""})
     public ResponseEntity<?> createVisitation(@Valid @RequestBody Visitation visitation, BindingResult result) {

@@ -10,6 +10,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class VisitationService implements CrudService<Visitation, Long> {
@@ -34,6 +35,14 @@ public class VisitationService implements CrudService<Visitation, Long> {
         visitationRepository
             .findVisitationsByPatient(patient)
             .forEach(visitations::add);
+        return visitations;
+    }
+
+    public List<Visitation> findAllByVisitationType(String type) {
+        List<Visitation> visitations = findAll()
+            .stream()
+            .filter(v -> v.getVisitationType().getType().equals(type))
+            .collect(Collectors.toList());
         return visitations;
     }
 
