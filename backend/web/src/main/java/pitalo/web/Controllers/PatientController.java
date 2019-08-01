@@ -2,7 +2,6 @@ package pitalo.web.Controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pitalo.domain.Patient.Patient;
 import pitalo.domain.Visitation.Visitation;
@@ -32,10 +31,7 @@ public class PatientController {
     }
 
     @PostMapping({ "", "/"})
-    public ResponseEntity<?> registerPatient(
-        @Valid @RequestBody Patient patient,
-        BindingResult result
-    ) {
+    public ResponseEntity<?> registerPatient(@Valid @RequestBody Patient patient) {
         Patient savedPatient = patientService.save(patient);
         return new ResponseEntity<>(savedPatient, HttpStatus.CREATED);
     }
@@ -43,8 +39,7 @@ public class PatientController {
     @PatchMapping("/{id}")
     public ResponseEntity<?> updatePatient(
         @Valid @RequestBody Patient patient,
-        @PathVariable("id") Long id,
-        BindingResult result
+        @PathVariable("id") Long id
     ) {
         Patient savedPatient = patientService.save(patient);
         return new ResponseEntity<>(savedPatient, HttpStatus.CREATED);
