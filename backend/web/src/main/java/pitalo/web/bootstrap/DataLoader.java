@@ -169,8 +169,6 @@ public class DataLoader implements CommandLineRunner {
             .bloodType(BloodType.ANEGATIVE)
             .build();
 
-
-
         /**
          * Insurance Details
          *

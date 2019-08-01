@@ -25,8 +25,15 @@ public class PatientController {
     }
 
     @GetMapping({ "", "/"})
-    public ResponseEntity<?> findAll() {
-        List<Patient> patients = patientService.findAll();
+    public ResponseEntity<?> findAll(
+        @RequestParam(name = "searchBy", required = false) String searchBy,
+        @RequestParam(name = "value", required = false) String value
+    ) {
+        if (searchBy == null && value == null) {
+            List<Patient> patients = patientService.findAll();
+            return new ResponseEntity<>(patients, HttpStatus.OK);
+        }
+        List<Patient> patients = patientService.findAll(searchBy, value);
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 
@@ -38,11 +45,11 @@ public class PatientController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<?> updatePatient(
-        @Valid @RequestBody Patient patient,
+        @RequestBody Map<String, Object> updates,
         @PathVariable("id") Long id
     ) {
-        Patient savedPatient = patientService.save(patient);
-        return new ResponseEntity<>(savedPatient, HttpStatus.CREATED);
+        Patient updatedPatient = patientService.update(id, updates);
+        return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -66,7 +73,6 @@ public class PatientController {
     ) {
         Patient patient = patientService.findById(id);
         Visitation visitation = visitationService.update(visitationId, updates, patient);
-        if (visitation == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return new ResponseEntity<>(visitation, HttpStatus.OK);
     }
 

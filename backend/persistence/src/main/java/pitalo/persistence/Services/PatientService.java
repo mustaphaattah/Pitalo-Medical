@@ -1,12 +1,15 @@
 package pitalo.persistence.Services;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.ReflectionUtils;
 import pitalo.domain.Patient.Patient;
 import pitalo.persistence.Exceptions.PatientNotFoundException;
 import pitalo.persistence.Repositories.PatientRepository;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class PatientService implements CrudService<Patient, Long> {
@@ -28,6 +31,19 @@ public class PatientService implements CrudService<Patient, Long> {
         return patients;
     }
 
+    public List<Patient> findAll(String searchBy, String value) {
+        switch (searchBy) {
+            case "firstName":
+                return patientRepository
+                    .findAllByFirstNameLike(String.format("%%%s%%", value));
+
+            default:
+                return new ArrayList<>();
+        }
+    }
+
+
+
     @Override
     public Patient findById(Long id) {
         return patientRepository.findById(id)
@@ -47,6 +63,16 @@ public class PatientService implements CrudService<Patient, Long> {
                 });
         }
         return savedPatient;
+    }
+
+    public Patient update(Long id, Map<String, Object> updates) {
+        Patient patient = findById(id);
+        updates.forEach((key, value) -> {
+            Field field = ReflectionUtils.findField(Patient.class, key);
+            field.setAccessible(true);
+            ReflectionUtils.setField(field, patient, value);
+        });
+        return save(patient);
     }
 
     @Override
