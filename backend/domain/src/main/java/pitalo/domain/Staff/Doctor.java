@@ -1,5 +1,6 @@
 package pitalo.domain.Staff;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,6 +29,7 @@ public class Doctor extends Person {
     private Specialty specialty;
 
     @Singular("visitation")
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "doctor")
     private Set<Visitation> visitations;
 

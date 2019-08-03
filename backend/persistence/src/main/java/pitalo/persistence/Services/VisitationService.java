@@ -3,6 +3,7 @@ package pitalo.persistence.Services;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 import pitalo.domain.Patient.Patient;
+import pitalo.domain.Staff.Doctor;
 import pitalo.domain.Staff.Nurse;
 import pitalo.domain.Visitation.Visitation;
 import pitalo.persistence.Exceptions.VisitationNotFoundException;
@@ -56,6 +57,29 @@ public class VisitationService implements CrudService<Visitation, Long> {
     public List<Visitation> findAllByNurse(Nurse nurse, String type, String status) {
         List<Visitation> visitations = visitationRepository
             .findVisitationsByNurse(nurse)
+            .stream()
+            .collect(Collectors.toList());
+
+        if (type != null) {
+            visitations = visitations
+                .stream()
+                .filter(visit -> visit.getVisitationType().getType().equals(type))
+                .collect(Collectors.toList());
+
+            if (status != null) {
+                return visitations
+                    .stream()
+                    .filter(visit -> visit.getStatus().name().equals(status))
+                    .collect(Collectors.toList());
+            }
+        }
+
+        return visitations;
+    }
+
+    public List<Visitation> findAllByDoctor(Doctor doctor, String type, String status) {
+        List<Visitation> visitations = visitationRepository
+            .findVisitationsByDoctor(doctor)
             .stream()
             .collect(Collectors.toList());
 
