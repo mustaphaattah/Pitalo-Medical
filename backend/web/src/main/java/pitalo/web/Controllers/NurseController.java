@@ -44,4 +44,5 @@ public class NurseController {
         List<Visitation> visitations = visitationService.findAllByNurse(nurse, type, status);
         return new ResponseEntity<>(visitations, HttpStatus.OK);
     }
+
 }
