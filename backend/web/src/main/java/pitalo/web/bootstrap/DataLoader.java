@@ -9,6 +9,7 @@ import pitalo.domain.Sex;
 import pitalo.domain.Staff.Doctor;
 import pitalo.domain.Staff.Nurse;
 import pitalo.domain.Staff.Specialty;
+import pitalo.domain.Visitation.Status;
 import pitalo.domain.Visitation.Visitation;
 import pitalo.domain.Visitation.VisitationType.*;
 import pitalo.domain.Visitation.Vitals;
@@ -894,6 +895,7 @@ public class DataLoader implements CommandLineRunner {
             .doctor(elvina)
             .nurse(selma)
             .visitationType(appoint1)
+            .status(Status.Completed)
             .time(LocalDateTime.of(2008, Month.JUNE, 18, 13, 32))
             .patient(patient2)
             .build();
@@ -904,7 +906,8 @@ public class DataLoader implements CommandLineRunner {
             .doctor(jonah)
             .nurse(selma)
             .visitationType(appoint2)
-            .time(LocalDateTime.of(2010, Month.NOVEMBER, 5, 9, 43))
+            .status(Status.Pending)
+            .time(LocalDateTime.of(2019, Month.NOVEMBER, 5, 9, 43))
             .patient(patient1)
             .build();
 
@@ -922,8 +925,9 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .vitals(vitals4)
             .doctor(garrett)
-            .nurse(rickey)
+            .nurse(alex)
             .visitationType(emer2)
+            .status(Status.Completed)
             .time(LocalDateTime.of(2010, Month.DECEMBER, 8, 19, 24))
             .patient(patient3)
             .build();
@@ -932,7 +936,8 @@ public class DataLoader implements CommandLineRunner {
             .builder()
             .vitals(vitals5)
             .doctor(ellen)
-            .nurse(alex)
+            .nurse(rickey)
+            .status(Status.Cancelled)
             .visitationType(walk1)
             .time(LocalDateTime.of(2014, Month.FEBRUARY, 28, 10, 46))
             .patient(patient5)

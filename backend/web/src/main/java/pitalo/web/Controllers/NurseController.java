@@ -2,12 +2,11 @@ package pitalo.web.Controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pitalo.domain.Staff.Nurse;
+import pitalo.domain.Visitation.Visitation;
 import pitalo.persistence.Services.NurseService;
+import pitalo.persistence.Services.VisitationService;
 
 import java.util.List;
 
@@ -16,9 +15,11 @@ import java.util.List;
 public class NurseController {
 
     private final NurseService nurseService;
+    private final VisitationService visitationService;
 
-    public NurseController(NurseService nurseService) {
+    public NurseController(NurseService nurseService, VisitationService visitationService) {
         this.nurseService = nurseService;
+        this.visitationService = visitationService;
     }
 
     @GetMapping({ "", "/" })
@@ -31,5 +32,16 @@ public class NurseController {
     public ResponseEntity<?> findOne(@PathVariable Long id) {
         Nurse nurse = nurseService.findById(id);
         return new ResponseEntity<>(nurse, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/visitations")
+    public ResponseEntity<?> getVisitations(
+        @PathVariable("id") Long id,
+        @RequestParam(name = "type", required = false) String type,
+        @RequestParam(name = "status", required = false) String status
+    ) {
+        Nurse nurse = nurseService.findById(id);
+        List<Visitation> visitations = visitationService.findAllByNurse(nurse, type, status);
+        return new ResponseEntity<>(visitations, HttpStatus.OK);
     }
 }

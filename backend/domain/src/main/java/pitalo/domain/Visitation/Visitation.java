@@ -70,9 +70,10 @@ public class Visitation extends BaseEntity {
     @PrePersist
     protected void init() {
 
-        if (time == null)
+        if (this.time == null)
             this.time = LocalDateTime.now();
 
-        this.status = Status.Pending;
+        if (this.status == null)
+            this.status = Status.Pending;
     }
 }

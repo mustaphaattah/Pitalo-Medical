@@ -3,6 +3,7 @@ package pitalo.persistence.Repositories;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import pitalo.domain.Patient.Patient;
+import pitalo.domain.Staff.Nurse;
 import pitalo.domain.Visitation.Visitation;
 
 import java.util.List;
@@ -11,4 +12,5 @@ import java.util.List;
 public interface VisitationRepository extends CrudRepository<Visitation, Long> {
 
     List<Visitation> findVisitationsByPatient(Patient patient);
+    List<Visitation> findVisitationsByNurse(Nurse nurse);
 }

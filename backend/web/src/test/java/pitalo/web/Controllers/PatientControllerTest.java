@@ -143,7 +143,7 @@ class PatientControllerTest {
 
         when(patientService.findById(anyLong())).thenReturn(john);
 
-        when(visitationService.findAllByPatient(any(), any()))
+        when(visitationService.findAllByPatient(any(), any(), any()))
             .thenReturn(visitations);
 
 
@@ -155,7 +155,7 @@ class PatientControllerTest {
 
 
         verify(patientService).findById(anyLong());
-        verify(visitationService).findAllByPatient(any(), any());
+        verify(visitationService).findAllByPatient(any(), any(), any());
     }
 
     @Test
@@ -163,7 +163,7 @@ class PatientControllerTest {
 
         when(patientService.findById(anyLong())).thenReturn(john);
 
-        when(visitationService.findAllByPatient(any(), any()))
+        when(visitationService.findAllByPatient(any(), any(),any()))
             .thenReturn(Arrays.asList(visitation2));
 
 

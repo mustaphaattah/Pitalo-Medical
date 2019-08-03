@@ -61,10 +61,11 @@ public class PatientController {
     @GetMapping("/{id}/visitations")
     public ResponseEntity<?> getVisitations(
         @PathVariable("id") Long id,
-        @RequestParam(name = "type", required = false) String type
+        @RequestParam(name = "type", required = false) String type,
+        @RequestParam(name = "status", required = false) String status
     ) {
         Patient patient = patientService.findById(id);
-        List<Visitation> visitations = visitationService.findAllByPatient(patient, type);
+        List<Visitation> visitations = visitationService.findAllByPatient(patient, type, status);
         return new ResponseEntity<>(visitations, HttpStatus.OK);
     }
 
