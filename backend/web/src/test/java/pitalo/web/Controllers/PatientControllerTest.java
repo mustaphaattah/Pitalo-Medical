@@ -150,10 +150,29 @@ class PatientControllerTest {
         mockMvc.perform(get("/api/patients/4/visitations"))
             .andExpect(status().isOk())
             .andExpect(content().contentType("application/json;charset=UTF-8"))
-            .andExpect(jsonPath("$", hasSize(2)));
+            .andExpect(jsonPath("$", hasSize(2)))
+            .andExpect(jsonPath("$[0].id").value(VISITATION_ID1));
 
 
         verify(patientService).findById(anyLong());
         verify(visitationService).findAllByPatient(any(), any());
+    }
+
+    @Test
+    void findVisitationsWithTypeByPatient() throws Exception {
+
+        when(patientService.findById(anyLong())).thenReturn(john);
+
+        when(visitationService.findAllByPatient(any(), any()))
+            .thenReturn(Arrays.asList(visitation2));
+
+
+        mockMvc.perform(get("/api/patients/4/visitations")
+            .param("type", "Appointment"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType("application/json;charset=UTF-8"))
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].id").value(VISITATION_ID2));
+
     }
 }
