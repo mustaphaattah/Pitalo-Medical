@@ -1,5 +1,6 @@
 package pitalo.web.Controllers;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +25,11 @@ public class PatientController {
         this.visitationService = visitationService;
     }
 
+    @ApiOperation(
+        value = "Find all patients",
+        notes = "Retrieving a collection of all the patients",
+        response = Patient[].class
+    )
     @GetMapping({ "", "/"})
     public ResponseEntity<?> findAll(
         @RequestParam(name = "searchBy", required = false) String searchBy,
@@ -37,12 +43,22 @@ public class PatientController {
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 
+    @ApiOperation(
+        value = "Create patient",
+        notes = "Create a new patient",
+        response = Patient.class
+    )
     @PostMapping({ "", "/"})
     public ResponseEntity<?> registerPatient(@Valid @RequestBody Patient patient) {
         Patient savedPatient = patientService.save(patient);
         return new ResponseEntity<>(savedPatient, HttpStatus.CREATED);
     }
 
+    @ApiOperation(
+        value = "Update patient",
+        notes = "Update an already existing patient",
+        response = Patient.class
+    )
     @PatchMapping("/{id}")
     public ResponseEntity<?> updatePatient(
         @RequestBody Map<String, Object> updates,
@@ -52,12 +68,22 @@ public class PatientController {
         return new ResponseEntity<>(updatedPatient, HttpStatus.OK);
     }
 
+    @ApiOperation(
+        value = "Find an patient",
+        notes = "Find an already existing patient using id",
+        response = Patient.class
+    )
     @GetMapping("/{id}")
     public ResponseEntity<?> findOne(@PathVariable("id") Long id) {
         Patient patient = patientService.findById(id);
         return new ResponseEntity<>(patient, HttpStatus.OK);
     }
 
+    @ApiOperation(
+        value = "Find all visitations by a patient",
+        notes = "Retrieve all visitations by a patient, can be filtered by type and status",
+        response = Visitation[].class
+    )
     @GetMapping("/{id}/visitations")
     public ResponseEntity<?> getVisitations(
         @PathVariable("id") Long id,
@@ -69,6 +95,11 @@ public class PatientController {
         return new ResponseEntity<>(visitations, HttpStatus.OK);
     }
 
+    @ApiOperation(
+        value = "Update a visitation by a patient",
+        notes = "Updates a visitation by id",
+        response = Visitation[].class
+    )
     @PatchMapping ("/{id}/visitations/{visitationId}")
     public ResponseEntity<?> updateVisitation(
         @PathVariable("id") Long id,

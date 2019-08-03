@@ -1,5 +1,6 @@
 package pitalo.web.Controllers;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,18 +23,33 @@ public class NurseController {
         this.visitationService = visitationService;
     }
 
+    @ApiOperation(
+        value = "Find all nurses",
+        notes = "Retrieve a collection of all nurses",
+        response = Nurse[].class
+    )
     @GetMapping({ "", "/" })
     public ResponseEntity<?> findAll() {
         List<Nurse> nurses = nurseService.findAll();
         return new ResponseEntity<>(nurses, HttpStatus.OK);
     }
 
+    @ApiOperation(
+        value = "Find one nurse",
+        notes = "Retrieve a nurse by id",
+        response = Nurse.class
+    )
     @GetMapping("/{id}")
     public ResponseEntity<?> findOne(@PathVariable Long id) {
         Nurse nurse = nurseService.findById(id);
         return new ResponseEntity<>(nurse, HttpStatus.OK);
     }
 
+    @ApiOperation(
+        value = "Find all visitations by a nurse",
+        notes = "Retrieve all visitations by a nurse, can be filtered by type and status",
+        response = Nurse[].class
+    )
     @GetMapping("/{id}/visitations")
     public ResponseEntity<?> getVisitations(
         @PathVariable("id") Long id,
