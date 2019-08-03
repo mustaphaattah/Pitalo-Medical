@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pitalo.domain.Staff.Nurse;
+import pitalo.persistence.Exceptions.NurseNotFoundException;
 import pitalo.persistence.Repositories.NurseRepository;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -61,9 +62,7 @@ class NurseServiceTest {
     @Test
     void findByIdNotFound() {
         when(nurseRepository.findById(anyLong())).thenReturn(Optional.empty());
-        Nurse nurse = nurseService.findById(ID);
-        assertNull(nurse);
-        verify(nurseRepository).findById(anyLong());
+        assertThrows(NurseNotFoundException.class, () -> nurseService.findById(ID));
     }
 
     @Test

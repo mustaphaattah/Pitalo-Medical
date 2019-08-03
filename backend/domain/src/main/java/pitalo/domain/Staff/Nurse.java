@@ -1,15 +1,14 @@
 package pitalo.domain.Staff;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Singular;
 import pitalo.domain.Address;
 import pitalo.domain.Person;
 import pitalo.domain.Sex;
 import pitalo.domain.Visitation.Visitation;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
@@ -24,8 +23,8 @@ import java.util.Set;
 @NoArgsConstructor
 public class Nurse extends Person {
 
-    @Singular("visitation")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nurse")
+    @JsonIgnore
+    @OneToMany(mappedBy = "nurse")
     private Set<Visitation> visitations;
 
     @Builder

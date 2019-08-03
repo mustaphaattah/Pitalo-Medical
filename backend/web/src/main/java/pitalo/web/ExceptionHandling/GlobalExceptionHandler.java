@@ -11,6 +11,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+import pitalo.persistence.Exceptions.NurseNotFoundException;
 import pitalo.persistence.Exceptions.PatientNotFoundException;
 import pitalo.persistence.Exceptions.VisitationNotFoundException;
 
@@ -21,7 +22,11 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler({PatientNotFoundException.class, VisitationNotFoundException.class})
+    @ExceptionHandler({
+        PatientNotFoundException.class,
+        VisitationNotFoundException.class,
+        NurseNotFoundException.class
+    })
     public ResponseEntity<?> handlePatientNotFound(Exception ex, WebRequest request) {
         String uriPath = ((ServletWebRequest)request).getRequest().getRequestURI();
         ApiErrorResponse response = ApiErrorResponse
