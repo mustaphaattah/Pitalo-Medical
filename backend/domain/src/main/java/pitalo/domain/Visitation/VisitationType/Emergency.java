@@ -23,7 +23,7 @@ public class Emergency extends VisitationType  {
     private EmergencyCode emergencyCode;
 
     @Builder
-    public Emergency(Long id, Visitation visitation, String type, @NotNull(message = "Emergency code is required") EmergencyCode emergencyCode) {
+    public Emergency(Long id, Visitation visitation, String type, EmergencyCode emergencyCode) {
         super(id, visitation, Emergency.type);
         this.emergencyCode = emergencyCode;
     }

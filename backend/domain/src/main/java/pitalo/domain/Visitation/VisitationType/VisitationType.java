@@ -1,6 +1,8 @@
 package pitalo.domain.Visitation.VisitationType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,6 +15,15 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@JsonTypeInfo(
+    use = JsonTypeInfo.Id.NAME,
+    property = "subType"
+)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Appointment.class),
+    @JsonSubTypes.Type(value = Emergency.class),
+    @JsonSubTypes.Type(value = WalkIn.class)
+})
 public abstract class VisitationType {
 
     @Id
@@ -23,7 +34,7 @@ public abstract class VisitationType {
     @JsonIgnore
     private Visitation visitation;
 
-    @Column(name = "type", updatable = false)
+    @Column(name = "type")
     private String type;
 
 }
