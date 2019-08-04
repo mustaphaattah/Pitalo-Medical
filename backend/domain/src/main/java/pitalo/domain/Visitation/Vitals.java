@@ -1,5 +1,6 @@
 package pitalo.domain.Visitation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -38,14 +39,14 @@ public class Vitals extends BaseEntity {
     @Column(name = "respiration_rate")
     private String respirationRate;
 
-    @Column(name = "blood_type")
-    private BloodType bloodType;
+
 
     @OneToOne(mappedBy = "vitals")
+    @JsonIgnore
     private Visitation visitation;
 
     @Builder
-    public Vitals(Long id, String bloodPressure, String bodyTemperature, String pulseRate, String weight, String height, String respirationRate, BloodType bloodType, Visitation visitation) {
+    public Vitals(Long id, String bloodPressure, String bodyTemperature, String pulseRate, String weight, String height, String respirationRate, Visitation visitation) {
         super(id);
         this.bloodPressure = bloodPressure;
         this.bodyTemperature = bodyTemperature;
@@ -53,7 +54,6 @@ public class Vitals extends BaseEntity {
         this.weight = weight;
         this.height = height;
         this.respirationRate = respirationRate;
-        this.bloodType = bloodType;
         this.visitation = visitation;
     }
 }

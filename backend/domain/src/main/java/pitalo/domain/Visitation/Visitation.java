@@ -1,5 +1,6 @@
 package pitalo.domain.Visitation;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +22,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Visitation extends BaseEntity {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "type_id")
     private VisitationType visitationType;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -29,10 +31,12 @@ public class Visitation extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "nurse_id")
+    @JsonIgnore
     private Nurse nurse;
 
     @ManyToOne
     @JoinColumn(name = "doctor_id")
+    @JsonIgnore
     private Doctor doctor;
 
     private String diagnosis;
@@ -40,14 +44,17 @@ public class Visitation extends BaseEntity {
     private String complaint;
 
     @ManyToOne
-    @JoinColumn(name = "visitations")
+    @JoinColumn(name = "patient_id")
+    @JsonIgnore
     private Patient patient;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime time;
 
+    private Status status;
+
     @Builder
-    public Visitation(Long id, VisitationType visitationType, Vitals vitals, Nurse nurse, Doctor doctor, String diagnosis, String complaint, Patient patient, LocalDateTime time) {
+    public Visitation(Long id, VisitationType visitationType, Vitals vitals, Nurse nurse, Doctor doctor, String diagnosis, String complaint, Patient patient, LocalDateTime time, Status status) {
         super(id);
         this.visitationType = visitationType;
         this.vitals = vitals;
@@ -57,5 +64,16 @@ public class Visitation extends BaseEntity {
         this.complaint = complaint;
         this.patient = patient;
         this.time = time;
+        this.status = status;
+    }
+
+    @PrePersist
+    protected void init() {
+
+        if (this.time == null)
+            this.time = LocalDateTime.now();
+
+        if (this.status == null)
+            this.status = Status.Pending;
     }
 }

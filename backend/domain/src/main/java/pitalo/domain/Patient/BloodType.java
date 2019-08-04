@@ -1,4 +1,4 @@
-package pitalo.domain.Visitation;
+package pitalo.domain.Patient;
 
 import lombok.Getter;
 

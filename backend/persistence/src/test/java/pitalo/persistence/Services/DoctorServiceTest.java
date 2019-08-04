@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pitalo.domain.Staff.Doctor;
+import pitalo.persistence.Exceptions.DoctorNotFoundException;
 import pitalo.persistence.Repositories.DoctorRepository;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
@@ -62,8 +63,7 @@ class DoctorServiceTest {
     @Test
     void findByIdNotFound() {
         when(doctorRepository.findById(anyLong())).thenReturn(Optional.empty());
-        Doctor doctor = doctorService.findById(ID);
-        assertNull(doctor);
+        assertThrows(DoctorNotFoundException.class, () -> doctorService.findById(ID));
     }
 
     @Test
