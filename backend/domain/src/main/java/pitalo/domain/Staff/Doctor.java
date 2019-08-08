@@ -1,10 +1,7 @@
 package pitalo.domain.Staff;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Singular;
+import lombok.*;
 import pitalo.domain.Address;
 import pitalo.domain.Person;
 import pitalo.domain.Sex;
@@ -22,6 +19,7 @@ import java.util.Set;
 @Data
 @Entity
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Doctor extends Person {
 
     @OneToOne(fetch = FetchType.EAGER)

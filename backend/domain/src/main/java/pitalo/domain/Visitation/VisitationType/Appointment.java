@@ -2,6 +2,7 @@ package pitalo.domain.Visitation.VisitationType;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import pitalo.domain.Visitation.Visitation;
 
@@ -12,6 +13,7 @@ import javax.persistence.Entity;
 @Data
 @NoArgsConstructor
 @DiscriminatorValue("Appointment")
+@EqualsAndHashCode(callSuper = false)
 public class Appointment extends VisitationType  {
 
     private static final String type = "Appointment";

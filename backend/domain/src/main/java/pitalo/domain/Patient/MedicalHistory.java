@@ -12,7 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@EqualsAndHashCode(exclude = {"patient"})
+@EqualsAndHashCode(callSuper = false, exclude = {"patient"})
 public class MedicalHistory extends BaseEntity {
 
     @Singular("allergy")

@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './components/Home';
+import Patients from './components/Patient/Patients';
 import Error from './Error';
 
 
@@ -13,6 +14,7 @@ const App = () => (
     <div>
       <Route exact path="/" component={Home} />
       <Route path="/error" component={Error} />
+      <Route path="/patients" component={Patients} />
     </div>
   </Router>
 );

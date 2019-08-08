@@ -1,9 +1,6 @@
 package pitalo.domain.Visitation.VisitationType;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pitalo.domain.Visitation.Visitation;
 
 import javax.persistence.DiscriminatorValue;
@@ -15,6 +12,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @AllArgsConstructor
 @DiscriminatorValue("Emergency")
+@EqualsAndHashCode(callSuper = false)
 public class Emergency extends VisitationType  {
 
     private static final String type = "Emergency";

@@ -3,6 +3,7 @@ package pitalo.domain.Staff;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import pitalo.domain.Address;
 import pitalo.domain.Person;
@@ -21,6 +22,7 @@ import java.util.Set;
 @Data
 @Entity
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Nurse extends Person {
 
     @JsonIgnore

@@ -1,10 +1,7 @@
 package pitalo.domain.Visitation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pitalo.domain.BaseEntity;
 
 import javax.persistence.Column;
@@ -16,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Vitals extends BaseEntity {
 
     @NotEmpty(message = "Blood Pressure is required")

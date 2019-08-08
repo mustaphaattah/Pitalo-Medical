@@ -1,10 +1,7 @@
 package pitalo.domain.Patient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pitalo.domain.Address;
 import pitalo.domain.Person;
 import pitalo.domain.Sex;
@@ -21,6 +18,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class Patient extends Person {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)

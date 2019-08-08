@@ -1,9 +1,6 @@
 package pitalo.domain.Staff;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import pitalo.domain.BaseEntity;
 
 import javax.persistence.Entity;
@@ -13,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @Data
 @Entity
+@EqualsAndHashCode(callSuper = false)
 public class Specialty extends BaseEntity {
 
     @NotEmpty(message = "Specialty cannot be empty")

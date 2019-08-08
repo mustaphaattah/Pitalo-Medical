@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@EqualsAndHashCode(exclude = {"patient"})
+@EqualsAndHashCode(callSuper = false, exclude = {"patient"})
 public class Insurance extends BaseEntity {
 
     @NotEmpty(message = "Provider is required")

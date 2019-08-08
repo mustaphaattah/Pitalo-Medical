@@ -1,10 +1,7 @@
 package pitalo.domain.Visitation;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import pitalo.domain.BaseEntity;
 import pitalo.domain.Patient.Patient;
@@ -20,6 +17,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 public class Visitation extends BaseEntity {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)

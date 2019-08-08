@@ -15,7 +15,7 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@EqualsAndHashCode(exclude = "patient")
+@EqualsAndHashCode(callSuper = false, exclude = "patient")
 public class EmergencyContact extends BaseEntity {
 
     @NotEmpty(message = "First Name is required")
