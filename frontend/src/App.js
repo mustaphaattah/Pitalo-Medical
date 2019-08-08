@@ -5,12 +5,14 @@ import {
 } from 'react-router-dom';
 
 import Home from './components/Home';
+import Error from './Error';
 
 
 const App = () => (
   <Router>
     <div>
       <Route exact path="/" component={Home} />
+      <Route path="/error" component={Error} />
     </div>
   </Router>
 );
