@@ -3,10 +3,9 @@ import {
   FETCH_PATIENT
 } from '../actions/types';
 
-
 const initialState = {
   patients: [],
-  patient: null
+  patient: {}
 }
 
 export default function (state = initialState, action) {
