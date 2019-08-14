@@ -4,6 +4,8 @@ import { getPatientVisitations, getPatient } from "../../actions";
 import Header from "../Header";
 import { dateFormat } from "../../utils/date";
 import { formatAddress } from "../../utils/address";
+import { getBloodType } from '../../utils/bloodTypes';
+import { historyList } from "../../utils/medicalHistory";
 
 class PatientDetail extends Component {
   componentDidMount() {
@@ -15,10 +17,10 @@ class PatientDetail extends Component {
   render() {
     const { visitations, patients } = this.props;
     const { patient } = patients;
-    const { insurance } = patient;
-    console.log(insurance);
+    const { insurance, medicalHistory } = patient;
+    console.log(patient);
     return (
-      <div className="w-screen h-screen bg-gray-100">
+      <div className="w-screen min-h-full bg-gray-100">
         <Header />
         <h2 className="text-center text-2xl text-gray-600 uppercase p-10 font-semibold">
           Patient Details
@@ -46,7 +48,7 @@ class PatientDetail extends Component {
               <div className="text-lg">
                 <span className="font-semibold">Email: </span>
                 <span className="text-base">
-                  {patient.email || "None Given"}
+                  {patient.email || "-"}
                 </span>
               </div>
               <div className="text-lg">
@@ -72,7 +74,7 @@ class PatientDetail extends Component {
             </div>
           </div>
 
-          <div className="flex border-b-4 pb-4 pt-4">
+          <div className="flex border-b-4 py-4">
             <div className="w-1/2 font-bold text-xl">Insurance</div>
 
             <div className="w-1/2">
@@ -94,6 +96,58 @@ class PatientDetail extends Component {
               </div>
             </div>
           </div>
+
+          <div className="flex border-b-4 py-4">
+            <div className="w-1/2 font-bold text-xl">Medical History</div>
+
+            <div className="w-1/2">
+              <div className="text-lg">
+                <span className="font-semibold">Blood Type: </span>
+                <span className="text-base">{medicalHistory ? getBloodType(medicalHistory.bloodType) : ''}</span>
+              </div>
+              <div className="text-lg flex">
+                <span className="font-semibold pr-2">Allergies: </span>
+                <div className="text-base">
+                  {medicalHistory ? historyList(medicalHistory.allergies) : ''}
+                </div>
+              </div>
+              <div className="text-lg flex">
+                <span className="font-semibold pr-2">LifeStyle: </span>
+                <div className="text-base">
+                  {medicalHistory ? historyList(medicalHistory.lifeStyle) : ''}
+                </div>
+              </div>
+              <div className="text-lg flex">
+                <span className="font-semibold pr-2">Illnesses: </span>
+                <div className="text-base">
+                  {medicalHistory ? historyList(medicalHistory.illnesses) : ''}
+                </div>
+              </div>
+              <div className="text-lg flex">
+                <span className="font-semibold pr-2">Injuries: </span>
+                <div className="text-base">
+                  {medicalHistory ? historyList(medicalHistory.injuries) : ''}
+                </div>
+              </div>
+              <div className="text-lg flex">
+                <span className="font-semibold pr-2">Surgeries: </span>
+                <div className="text-base">
+                  {medicalHistory ? historyList(medicalHistory.surgeries) : ''}
+                </div>
+              </div>
+              <div className="text-lg flex">
+                <span className="font-semibold pr-2">Medications: </span>
+                <div className="text-base">
+                  {medicalHistory ? historyList(medicalHistory.medications) : ''}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex border-b-4 py-4">
+            <div className="w-1/2 font-bold text-xl">Emergency Contacts</div>
+          </div>
+
         </div>
       </div>
     );
