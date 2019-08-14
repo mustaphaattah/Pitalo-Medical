@@ -9,7 +9,7 @@ function Error(props) {
       <svg className="h-64 w-64 block mt-12 m-auto">
         <use xlinkHref={`${sprite}#skull`} />
       </svg>
-      <button onClick={() => props.history.goBack()} className="block m-auto mt-16 bg-red-900 text-white py-4 px-12 text-xl">
+      <button onClick={() => props.history.push('/patients')} className="block m-auto mt-16 bg-red-900 text-white py-4 px-12 text-xl">
         Go back
       </button>
     </div>

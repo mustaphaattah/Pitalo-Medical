@@ -6,6 +6,7 @@ import {
 
 import Home from './components/Home';
 import Patients from './components/Patient/Patients';
+import PatientDetail from './components/Patient/PatientDetail';
 import Error from './Error';
 
 
@@ -15,6 +16,7 @@ const App = () => (
       <Route exact path="/" component={Home} />
       <Route path="/error" component={Error} />
       <Route path="/patients" component={Patients} />
+      <Route path="/patient/:id/details" component={PatientDetail} />
     </div>
   </Router>
 );

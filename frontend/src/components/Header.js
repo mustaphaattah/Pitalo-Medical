@@ -5,7 +5,7 @@ import sprite from "./assets/sprite.svg";
 
 export default function Header() {
   return (
-    <div className="py-8 px-16 shadow-lg bg-white">
+    <div className="py-6 px-16 shadow-lg bg-white">
       <nav className="flex justify-between items-baseline">
         <div className="flex items-center">
           <svg className="h-12 w-12">
@@ -16,10 +16,10 @@ export default function Header() {
           </NavLink>
         </div>
         <div>
-          <NavLink to="/" className="pl-16 text-lg">
+          <NavLink to="/patients" className="pl-16 text-xl uppercase font-semibold">
             Patients
           </NavLink>
-          <NavLink to="/" className="pl-16 text-lg">
+          <NavLink to="/" className="pl-16 text-xl uppercase font-semibold">
             Staff
           </NavLink>
         </div>
