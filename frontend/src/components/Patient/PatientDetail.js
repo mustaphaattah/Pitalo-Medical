@@ -17,10 +17,10 @@ class PatientDetail extends Component {
   render() {
     const { visitations, patients } = this.props;
     const { patient } = patients;
-    const { insurance, medicalHistory } = patient;
-    console.log(patient);
+    const { insurance, medicalHistory, emergencyContacts } = patient;
+    const contactClasses = (emergencyContacts && emergencyContacts.length > 1) ? 'pb-2 border-b-2' : '';
     return (
-      <div className="w-screen min-h-full bg-gray-100">
+      <div className="w-screen min-h-screen bg-gray-100">
         <Header />
         <h2 className="text-center text-2xl text-gray-600 uppercase p-10 font-semibold">
           Patient Details
@@ -146,6 +146,27 @@ class PatientDetail extends Component {
 
           <div className="flex border-b-4 py-4">
             <div className="w-1/2 font-bold text-xl">Emergency Contacts</div>
+
+            <div className="w-1/2">
+              {
+                emergencyContacts ? emergencyContacts.map(contact => (
+                  <div key={contact.phoneNumber} className={contactClasses}>
+                    <div className="text-lg">
+                      <span className="font-semibold">Name: </span>
+                      <span className="text-base">{contact.firstName} {contact.lastName}</span>
+                    </div>
+                    <div className="text-lg">
+                      <span className="font-semibold">Relationship: </span>
+                      <span className="text-base">{contact.relationship}</span>
+                    </div>
+                    <div className="text-lg">
+                      <span className="font-semibold">Phone Number: </span>
+                      <span className="text-base">{contact.phoneNumber}</span>
+                    </div>
+                  </div>
+                )) : ''
+              }
+            </div>
           </div>
 
         </div>
