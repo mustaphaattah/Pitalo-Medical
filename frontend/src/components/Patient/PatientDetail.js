@@ -6,6 +6,7 @@ import { dateFormat } from "../../utils/date";
 import { formatAddress } from "../../utils/address";
 import { getBloodType } from '../../utils/bloodTypes';
 import { historyList } from "../../utils/medicalHistory";
+import Footer from "../Footer";
 
 class PatientDetail extends Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ class PatientDetail extends Component {
     const { insurance, medicalHistory, emergencyContacts } = patient;
     const contactClasses = (emergencyContacts && emergencyContacts.length > 1) ? 'pb-2 border-b-2' : '';
     return (
-      <div className="w-screen min-h-screen bg-gray-100">
+      <div className="flex flex-col w-screen min-h-screen bg-gray-100">
         <Header />
         <h2 className="text-center text-2xl text-gray-600 uppercase p-10 font-semibold">
           Patient Details
@@ -170,6 +171,7 @@ class PatientDetail extends Component {
           </div>
 
         </div>
+        <Footer />
       </div>
     );
   }
