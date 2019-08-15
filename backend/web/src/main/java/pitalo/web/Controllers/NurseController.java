@@ -48,7 +48,7 @@ public class NurseController {
     @ApiOperation(
         value = "Find all visitations by a nurse",
         notes = "Retrieve all visitations by a nurse, can be filtered by type and status",
-        response = Nurse[].class
+        response = Visitation[].class
     )
     @GetMapping("/{id}/visitations")
     public ResponseEntity<?> getVisitations(
