@@ -19,7 +19,7 @@ export default function Header() {
           <NavLink to="/patients" className="pl-16 uppercase font-semibold">
             Patients
           </NavLink>
-          <NavLink to="/" className="pl-16 uppercase font-semibold">
+          <NavLink to="/staff" className="pl-16 uppercase font-semibold">
             Staff
           </NavLink>
         </div>

@@ -23,7 +23,7 @@ export default function Home() {
             <NavLink to="/patients" className="pl-16 text-lg">
               Patients
             </NavLink>
-            <NavLink to="/" className="pl-16 text-lg">
+            <NavLink to="/staff" className="pl-16 text-lg">
               Staff
             </NavLink>
           </div>

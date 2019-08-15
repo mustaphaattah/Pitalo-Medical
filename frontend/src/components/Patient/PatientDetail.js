@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getPatientVisitations, getPatient } from "../../actions";
+import { getPatient } from "../../actions";
 import Header from "../Header";
 import { dateFormat } from "../../utils/date";
 import { formatAddress } from "../../utils/address";
@@ -11,12 +11,11 @@ import Footer from "../Footer";
 class PatientDetail extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.props.getPatientVisitations(id);
     this.props.getPatient(id, this.props.history);
   }
 
   render() {
-    const { visitations, patients } = this.props;
+    const { patients } = this.props;
     const { patient } = patients;
     const { insurance, medicalHistory, emergencyContacts } = patient;
     const contactClasses = (emergencyContacts && emergencyContacts.length > 1) ? 'pb-2 border-b-2' : '';
@@ -177,11 +176,8 @@ class PatientDetail extends Component {
   }
 }
 
-const mapStateToProps = ({ visitations, patients }) => ({
-  visitations,
-  patients
-});
+const mapStateToProps = ({ patients }) => ({ patients });
 export default connect(
   mapStateToProps,
-  { getPatientVisitations, getPatient }
+  { getPatient }
 )(PatientDetail);

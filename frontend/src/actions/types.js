@@ -8,3 +8,5 @@ export const FETCH_NURSES = "fetch-nurses";
 export const FETCH_NURSE = "fetch-nurse";
 
 export const FETCH_PATIENT_VISITATIONS = "fetch-patient-visitations";
+export const FETCH_NURSE_VISITATIONS = "fetch-nurse-visitations";
+export const FETCH_DOCTOR_VISITATIONS = "fetch-doctor-visitations";
