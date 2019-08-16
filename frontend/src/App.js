@@ -6,6 +6,8 @@ import {
 
 import Home from './components/Home';
 import Login from './components/Login';
+import NurseLogin from './components/NurseLogin';
+import DoctorLogin from './components/DoctorLogin';
 import Patients from './components/Patient/Patients';
 import PatientDetail from './components/Patient/PatientDetail';
 import Staff from './components/Staff/Staff';
@@ -21,7 +23,9 @@ const App = () => (
       <Route path="/patient/:id/details" component={PatientDetail} />
       <Route path="/staff" component={Staff} />
       
-      <Route path="/login" component={Login} />
+      <Route exact path="/login" component={Login} />
+      <Route path="/login/nurses" component={NurseLogin} />
+      <Route path="/login/doctors" component={DoctorLogin} />
     </div>
   </Router>
 );
