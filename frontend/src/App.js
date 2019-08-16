@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import Home from './components/Home';
+import Login from './components/Login';
 import Patients from './components/Patient/Patients';
 import PatientDetail from './components/Patient/PatientDetail';
 import Staff from './components/Staff/Staff';

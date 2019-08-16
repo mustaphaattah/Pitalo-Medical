@@ -40,7 +40,7 @@ export default function Home() {
           </p>
         </div>
 
-        <NavLink to="/" className="flex items-center justify-center">
+        <NavLink to="/login" className="flex items-center justify-center">
           <span className="text-2xl font-semibold bg-red-500 px-12 py-3 text-white">Login</span>
           <span className="bg-red-600 px-4 py-5 -mr-3">
             <svg className="h-5 w-5 fill-white">

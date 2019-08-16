@@ -11,11 +11,11 @@ export default function Header() {
           <svg className="h-8 w-8">
             <use xlinkHref={`${sprite}#medicine`} />
           </svg>
-          <NavLink to="/" className="text-2xl font-bold pl-3">
+          <NavLink to="/" className="text-2xl font-bold pl-3 text-gray-700">
             Pitalo Medical
           </NavLink>
         </div>
-        <div className="text-lg">
+        <div className="text-lg text-gray-600">
           <NavLink to="/patients" className="pl-16 uppercase font-semibold">
             Patients
           </NavLink>

@@ -1,9 +1,10 @@
 export const dateFormat = (date) => { 
   if (!date) return '';
-  const [year, month, day] = date;
-  const newDate = new Date(year, month - 1, day);
-  const monthString = newDate.toLocaleString('default', { month: 'long'});
-  return `${monthString} ${day}, ${year}`;
+  const newDate = new Date(date);
+  const month = new Intl.DateTimeFormat('en-US', { month: 'long'}).format(newDate);
+  const day = newDate.getDate();
+  const year = newDate.getFullYear();
+  return `${month} ${day}, ${year}`;
 }
 
 
