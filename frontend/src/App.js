@@ -7,7 +7,7 @@ import {
 import Home from './components/Home';
 import Login from './components/Login';
 import NurseLogin from './components/NurseLogin';
-import DoctorLogin from './components/DoctorLogin';
+import DoctorLogin from './components/Doctor/DoctorLogin';
 import Patients from './components/Patient/Patients';
 import PatientDetail from './components/Patient/PatientDetail';
 import Staff from './components/Staff/Staff';

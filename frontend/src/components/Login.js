@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import sprite from "./assets/sprite.svg";
 import Header from './Header';
 
-class Login extends Component {
+export default class Login extends Component {
   render() {
     return (
       <div className="w-screen min-h-screen bg-gray-200">
@@ -24,7 +23,3 @@ class Login extends Component {
     )
   }
 }
-
-export default connect(
-
-)(Login);
