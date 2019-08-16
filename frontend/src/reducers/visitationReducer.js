@@ -1,5 +1,5 @@
 import {
-  FETCH_PATIENT_VISITATIONS
+  FETCH_VISITATIONS
 } from '../actions/types';
 
 
@@ -10,7 +10,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case FETCH_PATIENT_VISITATIONS: 
+    case FETCH_VISITATIONS: 
       return {
         ...state,
         visitations: action.payload

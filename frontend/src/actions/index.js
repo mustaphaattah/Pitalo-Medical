@@ -2,11 +2,13 @@ import axios from 'axios';
 import {
   FETCH_PATIENTS,
   FETCH_PATIENT,
-  FETCH_PATIENT_VISITATIONS, 
+  FETCH_VISITATIONS, 
   FETCH_NURSES,
   FETCH_NURSE,
   FETCH_DOCTOR,
-  FETCH_DOCTORS
+  FETCH_DOCTORS,
+  LOGIN,
+  LOGOUT
 } from './types';
 
 
@@ -27,7 +29,7 @@ export const getPatient = (id, history) => async (dispatch) => {
 
 export const getPatientVisitations = (id) => async (dispatch) => {
   const res = await axios.get(`/api/patients/${id}/visitations`);
-  dispatch({ type: FETCH_PATIENT_VISITATIONS, payload: res.data });
+  dispatch({ type: FETCH_VISITATIONS, payload: res.data });
 }
 
 export const getNurses = () => async (dispatch) => {
@@ -56,4 +58,12 @@ export const getDoctor = (id, history) => async (dispatch) => {
   } catch(error) {
     history.push('/error');
   }
+}
+
+export const login = () => (dispatch) => {
+  dispatch({ type: LOGIN, payload: true });
+}
+
+export const logout = () => (dispatch) => {
+  dispatch({ type: LOGOUT, payload: false });
 }

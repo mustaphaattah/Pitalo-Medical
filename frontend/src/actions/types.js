@@ -7,6 +7,7 @@ export const FETCH_DOCTOR = "fetch-doctor";
 export const FETCH_NURSES = "fetch-nurses";
 export const FETCH_NURSE = "fetch-nurse";
 
-export const FETCH_PATIENT_VISITATIONS = "fetch-patient-visitations";
-export const FETCH_NURSE_VISITATIONS = "fetch-nurse-visitations";
-export const FETCH_DOCTOR_VISITATIONS = "fetch-doctor-visitations";
+export const FETCH_VISITATIONS = "fetch-visitations";
+
+export const LOGIN = 'login';
+export const LOGOUT = 'logout';

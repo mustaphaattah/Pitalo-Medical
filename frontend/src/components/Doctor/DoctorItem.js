@@ -6,7 +6,7 @@ import sprite from '../assets/sprite.svg';
 
 export default function DoctorItem({ doctor }) {
   return (
-    <NavLink to="/" className="flex bg-white w-4/12 mt-6 shadow-md hover:shadow-lg py-4 px-6 m-auto">
+    <NavLink to={`/doctor/${doctor.id}/visitations`} className="flex bg-white w-4/12 mt-6 shadow-md hover:shadow-lg py-4 px-6 m-auto">
       <svg className="h-12 w-12 mr-6">
         <use xlinkHref={`${sprite}#${doctorIcon(doctor.specialty.name)}`} />
       </svg>
