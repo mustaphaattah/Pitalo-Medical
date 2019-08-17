@@ -53,11 +53,16 @@ export const getDoctors= () => async (dispatch) => {
 
 export const getDoctor = (id, history) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/doctor/${id}`);
+    const res = await axios.get(`/api/doctors/${id}`);
     dispatch({ type: FETCH_DOCTOR, payload: res.data });
   } catch(error) {
     history.push('/error');
   }
+}
+
+export const getDoctorVisitations = (id) => async (dispatch) => {
+  const res = await axios.get(`/api/doctors/${id}/visitations`);
+  dispatch({ type: FETCH_VISITATIONS, payload: res.data });
 }
 
 export const login = () => (dispatch) => {

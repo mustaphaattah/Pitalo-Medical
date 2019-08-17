@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 
 import DoctorItem from './DoctorItem';
 import Header from '../Header';
-import { getDoctors } from '../../actions';
+import { getDoctors, logout } from '../../actions';
 
 
 class DoctorLogin extends Component {
   
   componentDidMount() {
     this.props.getDoctors();
+    this.props.logout();
   }
 
   render() {
@@ -29,5 +30,5 @@ class DoctorLogin extends Component {
 const mapStateToProps = ({ doctors }) => ({ doctors });
 export default connect( 
   mapStateToProps,
-  { getDoctors }
+  { getDoctors, logout }
 )(DoctorLogin);

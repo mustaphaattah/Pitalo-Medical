@@ -5915,6 +5915,10 @@ video {
   fill: #fff;
 }
 
+.fill-gray {
+  fill: #718096;
+}
+
 .stroke-current {
   stroke: currentColor;
 }
@@ -12820,6 +12824,10 @@ video {
 
   .sm\:fill-white {
     fill: #fff;
+  }
+
+  .sm\:fill-gray {
+    fill: #718096;
   }
 
   .sm\:stroke-current {
@@ -19730,6 +19738,10 @@ video {
     fill: #fff;
   }
 
+  .md\:fill-gray {
+    fill: #718096;
+  }
+
   .md\:stroke-current {
     stroke: currentColor;
   }
@@ -26638,6 +26650,10 @@ video {
     fill: #fff;
   }
 
+  .lg\:fill-gray {
+    fill: #718096;
+  }
+
   .lg\:stroke-current {
     stroke: currentColor;
   }
@@ -33544,6 +33560,10 @@ video {
 
   .xl\:fill-white {
     fill: #fff;
+  }
+
+  .xl\:fill-gray {
+    fill: #718096;
   }
 
   .xl\:stroke-current {
