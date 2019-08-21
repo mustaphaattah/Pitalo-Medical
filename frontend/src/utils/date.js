@@ -7,6 +7,15 @@ export const dateFormat = (date) => {
   return `${month} ${day}, ${year}`;
 }
 
+export const timeFormat = (date) => {
+  if (!date) return '';
+  const newDate = new Date(date);
+  const hour = newDate.getHours() + 1;
+  const minutes = newDate.getMinutes();
+
+  return `${hour}:${minutes} ${hour > 11 ? 'PM' : 'AM'}`;
+}
+
 
 
 
